@@ -1,0 +1,72 @@
+___ANGULAR___
+
+models/interface----]-order
+	  	    ]-orderDetail
+	            ]-user
+	  	    ]-product
+
+auth----]-guards
+	]-interceptor
+	
+components----]-productCard
+	      ]-productDetail
+	      ]-carousel ??
+	      ]-shoppingDetail
+	      ]-shoppingSummary
+	      ]-layout----]-header
+	   	          ]-footer
+
+partials----]-css réutilisables ??
+
+services----]-à voir avec Back
+
+pages----]-home
+	 ]-product
+	 ]-shoppingCart
+	 ]-deliveryMode
+	 ]-deliveryForm
+	 ]-login
+	 ]-signup
+	 ]-not-found
+	 ]-CGV
+	 ]-mention
+	 ]-admin----]-adminHome
+	 	    ]-adminProduct
+		    ]-adminOrder
+	     	    ]-adminCustomer
+		    ]-addProduct
+	   	    ]-orderDetail
+
+___JAVA___
+
+controllers----]-orderController
+	       ]-orderDetailController
+	       ]-userController
+	       ]-productController
+	       ]-authController
+
+models----]-order
+	  ]-orderDetail
+	  ]-user
+	  ]-product
+	  ]-role/enum
+	  ]-delivery/enum
+
+payload----]-security folder ??
+config----]-security folder ??
+
+repo/dao----]-orderRepo
+	    ]-orderDetailRepo
+	    ]-userRepo
+	    ]-productRepo
+
+security----]-security folder ??
+
+services----]-Impl]-orderImpl
+	  	  ]-orderDetailImpl
+	  	  ]-userImpl
+	  	  ]-productImpl
+	    ]-orderService
+	    ]-orderDetailService
+	    ]-userService
+	    ]-productService
