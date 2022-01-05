@@ -3,8 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-pom.xml
-!**/src/main/ressources/application.properties
+
+### sensitive data ###
+src/main/ressources/application.properties
 
 ### STS ###
 .apt_generated
