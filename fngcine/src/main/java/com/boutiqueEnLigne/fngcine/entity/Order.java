@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
@@ -15,14 +18,24 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Basic()
+    @Temporal(TemporalType.DATE)
     private Date order_date;
+
+    @NotBlank
+    @Size(min = 2, max = 80)
     private String receiver;
+
+    @NotBlank
+    @Size(min = 2, max = 80)
     private String delivery_address;
+
+    @NotNull
     private float shipping_fee;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     private User user;
 }

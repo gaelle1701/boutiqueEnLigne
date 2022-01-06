@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,16 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private int quantity;
+
+    @NotNull
     private float unit_price;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     private Product product;
 
 }
