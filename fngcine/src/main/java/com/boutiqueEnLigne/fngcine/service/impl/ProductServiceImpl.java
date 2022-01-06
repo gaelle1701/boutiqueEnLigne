@@ -51,14 +51,14 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    @Override
-    public Product getProductByLabel(String label) {
-        Optional<Product> product = productRepository.findByLabel(label);
-        if(product.isPresent()){
-            return product.get();
-        }
-        return null;
-    }
+//    @Override
+//    public Product getProductByLabel(String label) {
+//        Optional<Product> product = productRepository.findByLabel(label);
+//        if(product.isPresent()){
+//            return product.get();
+//        }
+//        return null;
+//    }
 
     @Override
     public Iterable<Product> getProducts() {

@@ -17,6 +17,7 @@ import java.util.List;
 @Setter
 @RequestMapping("api/products")
 public class ProductController {
+
     @Autowired
     private ProductService productService;
     @Autowired
@@ -31,17 +32,17 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable Long id) {
+    public Product getProduct(@PathVariable("id") Long id) {
         return productService.getProduct(id);
     }
 
-    @GetMapping("/{label}")
-    public Product getProductByLabel(@PathVariable String label) {
-        return productService.getProductByLabel(label);
-    }
+//    @GetMapping("/{label}")
+//    public Product getProductByLabel(@PathVariable String label) {
+//        return productService.getProductByLabel(label);
+//    }
 
     @GetMapping("/{genre}")
-    public ResponseEntity<List<Product>> getProductsByGenre(@PathVariable String genre) {
+    public ResponseEntity<List<Product>> getProductsByGenre(@PathVariable("genre") String genre) {
             List<Product> productList = productService.getProductsByGenre(genre);
             return new ResponseEntity<>(productList, HttpStatus.OK);
     }
@@ -52,14 +53,14 @@ public class ProductController {
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product productToUpdate){
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Long id,@RequestBody Product productToUpdate){
             Product updatedProduct = productService.updateProduct(productToUpdate);
             return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProductById(@PathVariable Long id) {
+    public void deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
     }
 }

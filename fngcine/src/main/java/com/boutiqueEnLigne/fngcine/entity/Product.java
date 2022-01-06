@@ -25,15 +25,15 @@ public class Product {
     @Size(max = 150)
     private String description;
 
-    private String url_img;
+    private String urlImg;
 
     @NotBlank
     @Size(max=20)
     private String genre;
 
     @NotNull
-    private float unit_price;
+    private float unitPrice;
 
     @NotNull
-    private int qty_stock;
+    private int qtyStock;
 }

@@ -20,7 +20,7 @@ public class Order {
 
     @Basic()
     @Temporal(TemporalType.DATE)
-    private Date order_date;
+    private Date orderDate;
 
     @NotBlank
     @Size(min = 2, max = 80)
@@ -28,10 +28,10 @@ public class Order {
 
     @NotBlank
     @Size(min = 2, max = 80)
-    private String delivery_address;
+    private String deliveryAddress;
 
     @NotNull
-    private float shipping_fee;
+    private float shippingFee;
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
