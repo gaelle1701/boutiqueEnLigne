@@ -11,5 +11,4 @@ import java.util.Optional;
 
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
-    Optional<Delivery> findByDelivery(EnumDelivery delivery);
 }

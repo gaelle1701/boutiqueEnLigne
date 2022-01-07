@@ -1,6 +1,8 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "deliveries")
@@ -11,9 +13,10 @@ public class Delivery {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private EnumDelivery delivery;
+    private EnumDelivery label;
 
-    //ShippingFee
+    @NotNull
+    private float shippingFee;
 
     public Delivery() {
     }
@@ -26,11 +29,19 @@ public class Delivery {
         this.id = id;
     }
 
-    public EnumDelivery getDelivery() {
-        return delivery;
+    public EnumDelivery getLabel() {
+        return label;
     }
 
-    public void setDelivery(EnumDelivery delivery) {
-        this.delivery = delivery;
+    public void setLabel(EnumDelivery label) {
+        this.label = label;
+    }
+
+    public float getShippingFee() {
+        return shippingFee;
+    }
+
+    public void setShippingFee(float shippingFee) {
+        this.shippingFee = shippingFee;
     }
 }

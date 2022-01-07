@@ -21,12 +21,15 @@ public class OrderDetail{
     private float unitPrice;
 
     @NotNull
-    private int quantity;
+    private float priceByQty;
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Order order;
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Product product;
+
+    @NotNull
+    private int quantity;
 
 }

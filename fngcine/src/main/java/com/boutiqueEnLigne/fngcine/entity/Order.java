@@ -31,7 +31,7 @@ public class Order {
     private String deliveryAddress;
 
     @NotNull
-    private float shippingFee;
+    private float totalPrice;
 
     //Prix total commande
 
@@ -40,6 +40,7 @@ public class Order {
 
     @ManyToOne(fetch=FetchType.LAZY)
     private User user;
+
 
 
 }
