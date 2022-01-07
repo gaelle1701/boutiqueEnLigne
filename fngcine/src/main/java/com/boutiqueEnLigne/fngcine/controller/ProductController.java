@@ -26,8 +26,13 @@ public class ProductController {
     ResponseEntity responseEntity;
 
     @GetMapping("")
-    public ResponseEntity<Iterable<Product>> getProducts() {
-        Iterable<Product> products = productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String genre) {
+        List<Product> products;
+        if (genre != null)  {
+            products = productService.getProductsByGenre(genre);
+        } else {
+            products = productService.getProducts();
+        }
         return ResponseEntity.ok(products);
     }
 
@@ -36,16 +41,12 @@ public class ProductController {
         return productService.getProduct(id);
     }
 
-//    @GetMapping("/{label}")
-//    public Product getProductByLabel(@PathVariable String label) {
-//        return productService.getProductByLabel(label);
-//    }
-
-    @GetMapping("/{genre}")
+/*
+    @GetMapping("/genre/{genre}")
     public ResponseEntity<List<Product>> getProductsByGenre(@PathVariable("genre") String genre) {
             List<Product> productList = productService.getProductsByGenre(genre);
             return new ResponseEntity<>(productList, HttpStatus.OK);
-    }
+    }*/
 
     @PostMapping("")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {

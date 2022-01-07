@@ -5,22 +5,23 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class OrderDetail {
+public class OrderDetail{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    private int quantity;
+    private float unitPrice;
 
     @NotNull
-    private float unitPrice;
+    private int quantity;
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Order order;

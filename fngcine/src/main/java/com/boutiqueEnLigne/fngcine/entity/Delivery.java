@@ -13,6 +13,8 @@ public class Delivery {
     @Column(length = 20)
     private EnumDelivery delivery;
 
+    //ShippingFee
+
     public Delivery() {
     }
 

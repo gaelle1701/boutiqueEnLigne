@@ -45,23 +45,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProduct(Long id) {
         Optional<Product> product = productRepository.findById(id);
+        System.out.println(product);
         if(product.isPresent()){
             return product.get();
         }
         return null;
     }
 
-//    @Override
-//    public Product getProductByLabel(String label) {
-//        Optional<Product> product = productRepository.findByLabel(label);
-//        if(product.isPresent()){
-//            return product.get();
-//        }
-//        return null;
-//    }
-
     @Override
-    public Iterable<Product> getProducts() {
+    public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
@@ -70,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = productRepository.findAll();
         List<Product> productListByGenre = new ArrayList<Product>();
         for (Product product : productList) {
-                if (product.getGenre() == genre){
+                if (product.getGenre().contains(genre)){
                     productListByGenre.add(product);
                 }
             }

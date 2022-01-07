@@ -9,7 +9,6 @@ public interface ProductService {
     Product createProduct(Product product);
     Product updateProduct(Product product);
     Product getProduct(Long id);
-//    Product getProductByLabel(String label);
-    Iterable<Product>getProducts();
+    List<Product>getProducts();
     List<Product> getProductsByGenre(String genre);
 }
