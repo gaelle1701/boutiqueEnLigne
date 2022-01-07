@@ -37,6 +37,11 @@ public class OrderController {
         return orderService.getOrder(id);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Order> getOrdersByUser(@PathVariable("id") Long id) {
+        return orderService.getOrdersByUser(id);
+    }
+
     @PostMapping("")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order newOrder = orderService.createOrder(order);
