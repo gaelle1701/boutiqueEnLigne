@@ -1,12 +1,17 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "deliveries")
-public class Delivery {
+@Data
+public class Delivery{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
