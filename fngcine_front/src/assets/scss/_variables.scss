@@ -1,0 +1,24 @@
+/* POLICES */
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url(../font/PressStart2P-Regular.ttf);
+}
+@font-face {
+    font-family: 'Chakra Petch';
+    src: url(../font/ChakraPetch-Regular.ttf);
+}
+@font-face {
+    font-family: 'Inter';
+    src: url(../font/Inter-Regular.ttf);
+}
+
+$PressStart2P: 'Press Start 2P';
+$ChakraPetch: 'Chakra Petch';
+$Inter: 'Inter';
+
+
+/* COULEURS */
+$darkPurple:#2C1A4D;
+$lightPurple:#E2D9F3;
+$darkPink: #E35D6A;
+$lightPink: #F1AEB5;

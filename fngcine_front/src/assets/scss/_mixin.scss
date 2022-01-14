@@ -1,0 +1,116 @@
+@use "../../assets/scss/variables" as v;
+
+@mixin flexAround() {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+@mixin flexCenter() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexBetween() {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@mixin flexCenterVertical() {
+    display: flex;
+    align-items: center;
+}
+
+@mixin absoluteCenter() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
+@mixin relativeCenter() {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
+@mixin gradient($listColor) {   
+    background: -webkit-linear-gradient($listColor);
+    background: -moz-linear-gradient($listColor);
+    background: -o-linear-gradient($listColor);
+    background: linear-gradient($listColor);  
+}
+
+@mixin rounded($radius: 0.5em) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $color;
+        -moz-box-shadow:inset $top $left $blur $color;
+        box-shadow:inset $top $left $blur $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+@mixin separator($width, $color){
+    content: "";
+    height: 1pt;
+    background-color: v.$color;
+    width: $width;
+    margin: 20px auto;
+}
+
+@mixin title($color, $fontSize) {
+    font-size: $fontSize+px;
+    color: $color;
+    font-family: v.$PressStart2P;
+}
+
+@mixin button(){
+    width: 100px;
+    height: 40px;
+    font-family: v.$ChakraPetch;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@mixin buttonPurple(){
+    @include button();
+    background-color: v.$darkPurple;
+    color: v.$lightPurple;
+    &:hover{
+        background-color: v.$lightPurple;
+        color: v.$darkPurple;
+        border: solid 1px v.$darkPurple;
+    }
+    &:disabled{
+        background-color: v.$lightPurple;
+        color: v.$darkPurple;
+    }
+}
+
+@mixin buttonPink(){
+    @include button();
+    background-color: v.$darkPink;
+    color: v.$darkPurple;
+    &:hover{
+        background-color: v.$lightPurple;
+        color: v.$darkPink;
+        border: solid 1px v.$darkPink;
+    }
+    &:disabled{
+        background-color: v.$lightPink;
+        color: v.$darkPurple;
+    }
+}

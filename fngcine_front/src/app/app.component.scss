@@ -1,0 +1,17 @@
+@use '../assets/scss/variables' as v;
+@use '../assets/scss/mixin' as m;
+
+.btn-add{
+    @include m.buttonPink();
+}
+
+.btn-valid{
+    @include m.buttonPurple();
+}
+
+.titleDesktop{
+    @include m.title(v.$lightPink, 18);
+}
+.titleMobile{
+    @include m.title(v.$lightPink, 14);
+}
