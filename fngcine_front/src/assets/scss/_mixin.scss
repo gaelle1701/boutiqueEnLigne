@@ -114,3 +114,10 @@
         color: v.$darkPurple;
     }
 }
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 992px) { @content; }
+}
+@mixin for-tablet-landscape-down {
+    @media (max-width: 992px) { @content; }
+}

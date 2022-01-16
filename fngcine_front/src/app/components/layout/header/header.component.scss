@@ -1,0 +1,72 @@
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixin" as m;
+
+.logo{
+    width: 60px;
+    margin-left: 25px;
+}
+
+.navbar.navbar-expand-lg{
+    background-color: v.$lightPurple;
+    color: v.$darkPurple;
+}
+
+.btn.btn-outline{
+    border: solid 1px v.$darkPurple;
+    color: v.$darkPurple;
+}
+
+.navbar-collapse{
+    @include m.for-tablet-landscape-down {
+        border-top: solid 0.7vh v.$darkPink;
+        border-bottom: solid 0.7vh v.$darkPink;
+    }
+}
+
+.navbar-nav .nav-link {
+    @include m.title(v.$darkPurple, 14);
+    color: v.$darkPurple;
+    padding: 25px 25px;
+
+    @include m.for-tablet-landscape-down {
+        &:hover{
+            background-color: v.$lightPink;
+            color: v.$darkPurple !important;
+        }
+    }
+
+    @include m.for-tablet-landscape-up {
+        &.icon1{
+            position: absolute;
+            right: 400px;
+        }
+        &.icon2{
+            position: absolute;
+            right: 350px;
+        }
+    }
+
+    &:hover{
+        color: v.$darkPink;
+        cursor: pointer;
+    }
+}
+
+.d-flex{
+    margin-right: 25px;
+    @include m.for-tablet-landscape-down {
+        margin: 0 25px 20px 25px;
+    }
+}
+
+.navbar-light .navbar-toggler {
+    color: v.$darkPink;
+    border-color: v.$darkPink;
+    background-color: v.$darkPurple;
+    margin-right: 25px;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url(../../../../assets/img/barres-menu.svg);
+}
+
