@@ -1,1 +1,15 @@
-<p>product-card works!</p>
+<div class="card card-custom card-bg mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ productCards.urlImg }}" class="img-fluid rounded-start" alt="{{ productCards.label }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body text-center">
+          <h5 class="card-title textPink">{{ productCards.label }}</h5>
+          <h5 class="card-title textPink">{{ productCards.unitPrice }}</h5>
+          <p class="card-text textPurple">{{ productCards.description }}</p>
+          <button class="btn btn-valid">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>

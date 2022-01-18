@@ -76,6 +76,12 @@
     font-family: v.$PressStart2P;
 }
 
+@mixin text($color, $fontSize) {
+    font-size: $fontSize+px;
+    color: $color;
+    font-family: v.$ChakraPetch;
+}
+
 @mixin button(){
     width: 100px;
     height: 40px;

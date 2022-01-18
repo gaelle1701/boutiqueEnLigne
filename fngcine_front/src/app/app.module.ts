@@ -20,6 +20,7 @@ import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-f
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
 import { SingnupPageComponent } from './pages/signupPage/singnup-page/singnup-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SingnupPageComponent } from './pages/signupPage/singnup-page/singnup-pa
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
