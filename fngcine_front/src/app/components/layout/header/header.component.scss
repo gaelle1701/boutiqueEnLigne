@@ -1,0 +1,79 @@
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixin" as m;
+
+
+.logo{
+    width: 60px;
+    margin-left: 25px;
+}
+
+.navbar.navbar-expand-lg{
+    position: sticky;
+    background-color: v.$lightPurple;
+    color: v.$darkPurple;
+}
+
+.btn.btn-outline{
+    border: solid 1px v.$darkPurple;
+    color: v.$darkPurple;
+}
+
+.navbar-collapse{
+    @include m.for-tablet-landscape-down {
+        border-top: solid 0.7vh v.$darkPink;
+        border-bottom: solid 0.7vh v.$darkPink;
+    }
+}
+
+.navbar-nav .nav-link {
+    @include m.title(v.$darkPurple, 14);
+    color: v.$darkPurple;
+    padding: 25px 25px;
+
+    @include m.for-tablet-landscape-down {
+        &:hover{
+            background-color: v.$lightPink;
+            color: v.$darkPurple !important;
+        }
+        &.icon1, &.icon2{
+            padding: 17px 25px;
+        }
+    }
+
+    @include m.for-tablet-landscape-up {
+        &.icon1{
+            position: absolute;
+            right: 400px;
+            padding: 13px 25px 0px 25px;
+        }
+        &.icon2{
+            position: absolute;
+            right: 350px;
+            padding: 12px 25px;
+        }
+    }
+
+    &:hover{
+        color: v.$darkPink;
+        cursor: pointer;
+    }
+}
+
+.d-flex{
+    margin-right: 25px;
+    @include m.for-tablet-landscape-down {
+        margin: 0 25px 20px 25px;
+    }
+}
+
+.navbar-light .navbar-toggler {
+    color: v.$darkPink;
+    border-color: v.$darkPink;
+    background-color: v.$darkPurple;
+    margin-right: 25px;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url(../../../../assets/img/barres-menu.svg);
+}
+

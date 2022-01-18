@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingnupPageComponent } from './singnup-page.component';
+import { IconComponent } from './icon.component';
 
-describe('SingnupPageComponent', () => {
-  let component: SingnupPageComponent;
-  let fixture: ComponentFixture<SingnupPageComponent>;
+describe('IconComponent', () => {
+  let component: IconComponent;
+  let fixture: ComponentFixture<IconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingnupPageComponent ]
+      declarations: [ IconComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SingnupPageComponent);
+    fixture = TestBed.createComponent(IconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
