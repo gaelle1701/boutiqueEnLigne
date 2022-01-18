@@ -20,8 +20,8 @@ import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-f
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
 import { IconComponent } from './components/icon/icon.component';
-import { SignupPageComponent } from './pages/signupPage/signup-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +43,12 @@ import { FormsModule } from '@angular/forms';
     ProductPageComponent,
     ShoppingCartPageComponent,
     IconComponent,
-    SignupPageComponent
+    SignupPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
     </svg>
     Inscris-toi !
 </h1>
-<form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label for="lastname" class="form-label">Nom</label>
         <input type="text" class="form-control" id="lastname" formControlName="lastname">

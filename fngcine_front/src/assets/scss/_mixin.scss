@@ -77,10 +77,10 @@
 }
 
 @mixin button(){
-    width: 100px;
-    height: 40px;
+    width: 90px;
+    height: 35px;
     font-family: v.$ChakraPetch;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
 }
