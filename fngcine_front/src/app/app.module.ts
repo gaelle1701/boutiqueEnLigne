@@ -19,7 +19,9 @@ import { LoginPageComponent } from './pages/loginPage/login-page/login-page.comp
 import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-found-page.component';
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
-import { SingnupPageComponent } from './pages/signupPage/singnup-page/singnup-page.component';
+import { IconComponent } from './components/icon/icon.component';
+import { SignupPageComponent } from './pages/signupPage/signup-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { SingnupPageComponent } from './pages/signupPage/singnup-page/singnup-pa
     NotFoundPageComponent,
     ProductPageComponent,
     ShoppingCartPageComponent,
-    SingnupPageComponent
+    IconComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
