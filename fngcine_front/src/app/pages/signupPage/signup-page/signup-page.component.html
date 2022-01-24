@@ -1,0 +1,81 @@
+<h1>
+    <svg width="34" height="39" fill="none">
+        <path
+            d="M19.407 19.5 34 32.335a19.552 19.552 0 0 1-6.52 4.894C24.953 38.409 22.262 39 19.407 39a18.96 18.96 0 0 1-7.543-1.542c-2.4-1.029-4.466-2.413-6.197-4.152-1.731-1.74-3.108-3.815-4.132-6.227A19.21 19.21 0 0 1 0 19.5c0-2.64.512-5.167 1.535-7.58 1.024-2.411 2.4-4.487 4.132-6.226 1.73-1.74 3.796-3.123 6.197-4.152A18.96 18.96 0 0 1 19.407 0c2.855 0 5.546.59 8.073 1.771A19.551 19.551 0 0 1 34 6.665L19.407 19.5Z"
+            fill="#F1AEB5" />
+    </svg>
+    Inscris-toi !
+</h1>
+<div class="container">
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center">
+            <div class="col-md-3 mobile">
+                <label for="lastname" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastname" formControlName="lastname"
+                    [ngClass]="{ 'is-invalid': f['lastname'].invalid && (f['lastname'].touched || f['lastname'].dirty) }">
+                <div *ngIf="f['lastname'].invalid && (f['lastname'].touched || f['lastname'].dirty)"
+                    class="text-danger fst-italic">
+                    <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">
+                        Le nom est requis
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="firstname" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="firstname" formControlName="firstname"
+                    [ngClass]="{ 'is-invalid': f['firstname'].invalid && (f['firstname'].touched || f['firstname'].dirty) }">
+                <div *ngIf="f['firstname'].invalid && (f['firstname'].touched || f['firstname'].dirty)"
+                    class="text-danger fst-italic">
+                    <div *ngIf="f['firstname'].errors && f['firstname'].errors['required']">
+                        Le prénom est requis
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                    formControlName="email"
+                    [ngClass]="{ 'is-invalid': f['email'].invalid && (f['email'].touched || f['email'].dirty) }">
+                <div *ngIf="f['email'].invalid && (f['email'].touched || f['email'].dirty)"
+                    class="text-danger fst-italic">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">
+                        L'email est requis
+                    </div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['email']">
+                        Veuillez entrer un email valide
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].invalid && (f['password'].touched ||f['password'].dirty) }">
+                <div *ngIf="f['password'].invalid && (f['password'].touched || f['password'].dirty)"
+                    class="text-danger fst-italic">
+                    <div *ngIf="f['password'].errors && f['password'].errors['required']">
+                        Le password est requis
+                    </div>
+                    <div
+                        *ngIf="f['password'].errors && (f['password'].errors['minlength'] || f['password'].errors['pattern'])">
+                        Le mot de passe doit comporter au moins 8 caractères, une majuscule, un chiffre et un caractères
+                        spécial
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button type="submit" class="form-button" [disabled]="signupForm.invalid">Valider</button>
+        </div>
+    </form>
+    <div class="separator"></div>
+    <div class="row justify-content-center">
+        <div class="col-6 text-center">
+            <a [routerLink]="['/home']" class="home-return">Retour</a><span> à la page d'accueil</span>
+        </div>
+    </div>
+</div>

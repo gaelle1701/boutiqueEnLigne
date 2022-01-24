@@ -5,4 +5,26 @@ h1 {
     @include m.title(v.$lightPink, 18);
     margin: 60px;
     text-align: center;
+    @include m.for-mobile-landscape-down(){
+        font-size: 0.8rem;
+        margin: 35px
+    }
+}
+
+.form-button{
+    @include m.buttonPink();
+}
+
+.separator{
+    @include m.separator(400px);
+}
+
+.home-return{
+    color: v.$darkPink;
+    text-decoration: none;
+    
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }

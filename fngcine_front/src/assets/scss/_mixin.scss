@@ -62,12 +62,12 @@
     }
 }
 
-@mixin separator($width, $color){
+@mixin separator($width){
     content: "";
     height: 1pt;
-    background-color: v.$color;
-    width: $width;
-    margin: 20px auto;
+    background-color: v.$darkPink;
+    max-width: $width;
+    margin: 0px auto 50px auto;
 }
 
 @mixin title($color, $fontSize) {
@@ -77,10 +77,10 @@
 }
 
 @mixin button(){
-    width: 100px;
-    height: 40px;
+    width: 90px;
+    height: 35px;
     font-family: v.$ChakraPetch;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -120,4 +120,7 @@
 }
 @mixin for-tablet-landscape-down {
     @media (max-width: 992px) { @content; }
+}
+@mixin for-mobile-landscape-down {
+    @media (max-width: 576px) { @content; }
 }

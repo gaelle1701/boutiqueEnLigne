@@ -10,14 +10,10 @@
 
 .mobile{
     @include m.for-mobile-landscape-down{
-        padding-bottom: 10px;
+        padding-bottom: 50px;
         }
 }
 
 .form-button{
     @include m.buttonPink();
-}
-
-.smile-icon{
-    color: v.$lightPink;
 }
