@@ -1,4 +1,5 @@
 export interface Iproducts {
+    get(arg0: string): Iproducts;
     
     id: number;
     label: string;

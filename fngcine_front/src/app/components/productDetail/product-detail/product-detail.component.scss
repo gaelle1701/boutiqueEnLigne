@@ -2,6 +2,12 @@
 @use '../../../../assets/scss/mixin' as m;
 @import '../../../../assets/scss/shared';
 
+.text-pink{
+    @include m.text(v.$darkPink, 18);
+}
 .text-l-purple{
-    @include m.text(v.$lightPurple, 18);
+    @include m.text(v.$lightPurple, 14);
+}
+.text-l-pink{
+    @include m.text(v.$lightPink, 14);
 }

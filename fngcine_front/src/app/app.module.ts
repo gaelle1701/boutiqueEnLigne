@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { IconComponent } from './components/icon/icon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
+import { ProductDetailComponent } from './components/productDetail/product-detail/product-detail.component';
+import { ShoppingSummaryComponent } from './components/shoppingSummary/shopping-summary/shopping-summary.component';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.
     ShoppingCartPageComponent,
     IconComponent,
     SignupPageComponent,
+    ProductDetailComponent,
+    ShoppingSummaryComponent,
   ],
   imports: [
     BrowserModule,

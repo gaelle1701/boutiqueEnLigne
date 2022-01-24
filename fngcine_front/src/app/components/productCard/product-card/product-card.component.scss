@@ -1,14 +1,13 @@
 @use '../../../../assets/scss/variables' as v;
 @use '../../../../assets/scss/mixin' as m;
+@import '../../../../assets/scss/shared';
 
 .card-custom {
     @include m.rounded() ;
 }
-.btn-valid{
-    @include m.buttonPurple();
-}
+
 .textPink{
-    @include m.text(v.$darkPink, 14);
+    @include m.text(v.$darkPink, 18);
 }
 .textPurple{
     @include m.text(v.$darkPurple, 14);

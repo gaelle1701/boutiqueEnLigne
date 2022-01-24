@@ -9,7 +9,8 @@ import { Iproducts } from 'src/app/models/iproducts';
 })
 export class ProductService {
 
-  subProductCards$ = new Subject<Iproducts[]>();
+  subjProducts$ = new Subject<Iproducts[]>();
+  subjProduct$ = new Subject<Iproducts>();
 
   constructor(private http: HttpClient) { }
 
@@ -19,11 +20,16 @@ export class ProductService {
 
   getListProducts(): void {
     this.getProducts().subscribe(data => {
-      this.subProductCards$.next(data);
+      this.subjProducts$.next(data);
       console.log("data getListProducts: ", data);
       
     })
   }
+
+  getProductById(id: string): Observable<Iproducts> {    
+    return this.http.get<Iproducts>(`${environment.baseURL}/products/${parseInt(id, 10)}`);
+  }
+
 }
 
 
