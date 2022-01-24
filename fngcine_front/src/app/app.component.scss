@@ -1,13 +1,11 @@
 @use '../assets/scss/variables' as v;
 @use '../assets/scss/mixin' as m;
 
-.container-fluid{
-    color: v.$lightPurple;
-    min-height: 800px; /* real browsers */
-    //top: 91px;
-    padding: 0;
-}
 
 h1.mainTitle {
     @include m.title(v.$lightPink, 18)
+}
+
+.main {
+    min-height: calc(100vh - 95px); 
 }

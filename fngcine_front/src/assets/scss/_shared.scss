@@ -6,3 +6,21 @@ h1 {
     margin: 60px;
     text-align: center;
 }
+
+.back-link {
+   @include m.flexEnd();
+   margin: 0 120px 20px 0;
+}
+.back-link a {
+    @include m.title(v.$darkPink, 14);
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+.btn-purple{
+    @include m.buttonPurple();
+}
+.btn-pink{
+    @include m.buttonPink();
+}
+

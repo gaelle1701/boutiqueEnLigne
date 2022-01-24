@@ -12,6 +12,12 @@
     justify-content: center;
 }
 
+@mixin flexEnd() {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 @mixin flexBetween() {
     display: flex;
     justify-content: space-between;
