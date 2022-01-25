@@ -14,7 +14,7 @@ h1 {
 .back-link a {
     @include m.title(v.$darkPink, 14);
     text-decoration: none;
-    margin-left: 2rem;
+    margin-left: 1rem;
 }
 
 .btn-purple{

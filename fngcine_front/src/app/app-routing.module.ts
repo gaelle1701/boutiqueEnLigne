@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DeliveryModePageComponent } from './pages/deliveryModePage/delivery-mode-page/delivery-mode-page.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
 import { LoginPageComponent } from './pages/loginPage/login-page/login-page.component';
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'products/:id', component: ProductPageComponent },
-  { path: 'shopping', component: ShoppingCartPageComponent }
+  { path: 'shopping', component: ShoppingCartPageComponent },
+  { path: 'delivery-mode', component: DeliveryModePageComponent }
 ];
 
 @NgModule({

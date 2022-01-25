@@ -1,0 +1,14 @@
+@use '../../../../assets/scss/variables' as v;
+@use '../../../../assets/scss/mixin' as m;
+@import '../../../../assets/scss/shared';
+
+.card {
+    @include m.rounded();
+    background-color: v.$lightPink;
+}
+.sub-title-purple {
+    @include m.title(v.$darkPurple, 14);
+}
+.text-purple {
+    @include m.text(v.$darkPurple, 14);
+}

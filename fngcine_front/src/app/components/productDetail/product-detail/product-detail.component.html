@@ -1,25 +1,22 @@
-<div class="mb-3">
-    <div class="row g-0">
-      <div class="col-md-3">
-        <img src="{{ productDetails.urlImg }}" class="img-fluid rounded-start" alt="{{ productDetails.label }}">
-      </div>
-      <div class="col-md-5">
-        <div class="text-center">
-          <h5 class="text-l-purple">{{ productDetails.label }}</h5>
-          <p class="text-l-purple">{{ productDetails.genre }}</p>
-          <h5 class="text-l-pink">{{ productDetails.unitPrice }} €</h5>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <select class="form-select-sm">
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <!-- <option *ngFor="let quantity of quantities" [value]="quantity.qty_stock">{{qty_stock}}</option> -->
-       </select>
-       <app-icon [name]="'trash'" [size]="1.5" [color]="'#E35D6A'" class="ms-3"></app-icon>
-            
-      </div>
+<div class="row mb-2">
+  <div class="col-md-3 col-sm-3">
+    <img src="{{ productDetails.urlImg }}" class="img-fluid rounded-start" alt="{{ productDetails.label }}">
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <div class="text-center">
+      <p class="text-l-purple">{{ productDetails.label }}</p>
+      <p class="text-l-pink">{{ productDetails.unitPrice }} €</p>
     </div>
   </div>
+  <div class="col-md-3 col-sm-3">
+    <select class="form-select-sm">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+      <option value="">4</option>
+      <!-- <option *ngFor="let quantity of quantities" [value]="quantity.qty_stock">{{qty_stock}}</option> -->
+    </select>
+    <app-icon [name]="'trash'" [size]="1.5" [color]="'#E35D6A'" class="ms-3"></app-icon>
+  </div>
+</div>
+

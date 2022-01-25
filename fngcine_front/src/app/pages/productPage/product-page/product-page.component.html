@@ -1,14 +1,14 @@
 <h1 class="text-center">{{ product?.label }}</h1>
 <div class="back-link">
-  <app-icon [name]="'arrow-90deg-left'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
+  <app-icon [name]="'arrow-left'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
   <a [routerLink]="['/']" >Retour</a>
 </div>
 <div class="row justify-content-center">
-  <div class="col-md-4">
-    <img src="{{ product?.urlImg }}" alt="{{ product?.label }}">
+  <div class="col-md-4 col-sm-4">
+    <img src="{{ product?.urlImg }}" alt="{{ product?.label }}" class="img-fluid">
   </div>
   <div class="col-md-4">
-    <div class="card card-custom card-bg" style="width: 28rem;">
+    <div class="card">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-pink">Résumé:</h6>
         <p class="card-text text-purple">{{ product?.description }}</p>

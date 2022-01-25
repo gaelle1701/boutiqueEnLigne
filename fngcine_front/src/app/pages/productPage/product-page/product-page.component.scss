@@ -2,8 +2,9 @@
 @use '../../../../assets/scss/mixin' as m;
 @import '../../../../assets/scss/shared';
 
-.card-custom {
-    @include m.rounded() ;
+.card {
+    @include m.rounded();
+    background-color: v.$lightPurple;
 }
 .btn-pink{
     @include m.buttonPink();
@@ -14,9 +15,10 @@
 .text-purple{
     @include m.text(v.$darkPurple, 14);
 }
-.card-bg {
-    background-color: v.$lightPurple
-}
+
 .title-purple {
-    @include m.title(v.$darkPurple, 14)
+    @include m.title(v.$darkPurple, 14);
+}
+.img-fluid {
+   max-width: 70% !important;
 }
