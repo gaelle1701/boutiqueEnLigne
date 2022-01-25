@@ -23,7 +23,7 @@ public class Product {
     private String label;
 
     @NotBlank
-    @Size(max = 150)
+    @Size(max = 255)
     private String description;
 
     private String urlImg;
