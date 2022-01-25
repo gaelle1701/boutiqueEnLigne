@@ -12,6 +12,12 @@
     justify-content: center;
 }
 
+@mixin flexEnd() {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 @mixin flexBetween() {
     display: flex;
     justify-content: space-between;
@@ -74,6 +80,12 @@
     font-size: $fontSize+px;
     color: $color;
     font-family: v.$PressStart2P;
+}
+
+@mixin text($color, $fontSize) {
+    font-size: $fontSize+px;
+    color: $color;
+    font-family: v.$ChakraPetch;
 }
 
 @mixin button(){

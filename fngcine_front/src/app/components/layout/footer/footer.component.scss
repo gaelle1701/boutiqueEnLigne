@@ -6,6 +6,9 @@
     padding-top: 20px;
 }
 
+ul {
+    margin-bottom: 0px;
+}
 .menu{
     list-style: none;
     @include m.for-tablet-landscape-up{
@@ -13,24 +16,21 @@
         justify-content: space-around;
         margin: 0px 130px;
     }
-    @include m.for-mobile-landscape-down{
-        padding: 0px;
-    }
 
     & .menu-item{
-        @include m.for-mobile-landscape-down{
-        font-size: 0.7rem;
-    }
         color: v.$darkPurple;
-        @include m.title(v.$darkPurple, 14);
+        @include m.title(v.$darkPurple, 10);
         padding-bottom: 10px
     }
-    
     & .menu-item:hover{
         color: v.$darkPink;
         cursor: pointer;
     }
+}
 
+.copyright{
+    font-family: v.$Inter;
+    color: v.$darkPink;
 }
 
 .copyright{

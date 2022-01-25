@@ -12,8 +12,8 @@
             <div class="col-md-6 mobile">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" name="email" class="form-control" ngModel required #email="ngModel">
-                <div *ngIf="!email.invalid && (!email.dirty || !email.touched)">
-                    <div *ngIf="email.errors && email.errors['required']">L'email de passe est requis</div>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors && email.errors['required']" class="text-danger fst-italic">L'email est requis</div>
                 </div>
             </div>
         </div>
@@ -21,15 +21,15 @@
             <div class="col-md-6 mobile">
                 <div>
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input name="password" class="form-control" ngModel required #password="ngModel">
-                    <div *ngIf="!password.invalid && (!password.dirty || !password.touched)">
-                        <div *ngIf="password.errors && password.errors['required']">Le mot de passe est requis</div>
+                    <input type="password" name="password" class="form-control" ngModel required #password="ngModel">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors && password.errors['required']" class="text-danger fst-italic">Le mot de passe est requis</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <button type="submit" class="form-button" [disabled]="!loginForm.valid">Valider</button>
+            <button type="submit" class="btn-pink" [disabled]="!loginForm.valid">Valider</button>
         </div>
     </form>
     <div class="row justify-content-center">

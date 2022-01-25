@@ -11,7 +11,21 @@ h1 {
     }
 }
 
-.form-button{
+.back-link {
+    @include m.flexEnd();
+    margin: 0 120px 20px 0;
+}
+
+.back-link a {
+    @include m.title(v.$darkPink, 14);
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.btn-purple{
+    @include m.buttonPurple();
+}
+.btn-pink{
     @include m.buttonPink();
 }
 
