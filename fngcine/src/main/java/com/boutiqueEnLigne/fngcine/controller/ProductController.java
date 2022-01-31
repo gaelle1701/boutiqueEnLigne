@@ -26,13 +26,14 @@ public class ProductController {
     ResponseEntity responseEntity;
 
     @GetMapping("")
-    public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String genre) {
+    public ResponseEntity<List<Product>> getProducts() {
         List<Product> products;
-        if (genre != null)  {
-            products = productService.getProductsByGenre(genre);
-        } else {
-            products = productService.getProducts();
-        }
+//        if (genre != null)  {
+//            products = productService.getProductsByGenre(genre);
+//        } else {
+//            products = productService.getProducts();
+//        }
+        products = productService.getProducts();
         return ResponseEntity.ok(products);
     }
 
