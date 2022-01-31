@@ -8,9 +8,9 @@
 }
 
 .navbar.navbar-expand-lg{
-    position: sticky;
     background-color: v.$lightPurple;
     color: v.$darkPurple;
+    padding: 0;
 }
 
 .btn.btn-outline{
@@ -76,4 +76,3 @@
 .navbar-light .navbar-toggler-icon {
     background-image: url(../../../../assets/img/barres-menu.svg);
 }
-

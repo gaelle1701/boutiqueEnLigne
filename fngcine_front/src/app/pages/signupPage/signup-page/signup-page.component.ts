@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD:fngcine_front/src/app/pages/signupPage/signup-page/signup-page.component.ts
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+=======
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+>>>>>>> flora:fngcine_front/src/app/pages/signupPage/signup-page.component.ts
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +14,7 @@ import { Router } from '@angular/router';
 export class SignupPageComponent implements OnInit {
 
   signupForm: FormGroup;
+  submitted = false;
   pwdPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
 
   constructor(private router: Router) {
@@ -22,15 +27,26 @@ export class SignupPageComponent implements OnInit {
 
   initForm() {
     this.signupForm = new FormGroup({
-      lastname: new FormControl('', [Validators.required]),
+      lastname: new FormControl('', Validators.required),
       firstname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.pwdPattern)])
     })
+<<<<<<< HEAD:fngcine_front/src/app/pages/signupPage/signup-page/signup-page.component.ts
 
   }
 
   onSubmit() {
+=======
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.signupForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+>>>>>>> flora:fngcine_front/src/app/pages/signupPage/signup-page.component.ts
 
   }
 

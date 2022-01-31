@@ -1,0 +1,29 @@
+@use '../../../../../assets/scss/variables' as v;
+@use '../../../../../assets/scss/mixin' as m;
+@import '../../../../../assets/scss/shared';
+
+.manage-list {
+    @include m.text(v.$darkPink, 20);
+    padding: 0;
+    @include m.for-tablet-landscape-up {
+        @include m.flexAround();
+    }
+    
+    @include m.for-mobile-landscape-down {
+        @include m.text(v.$darkPink, 17);
+    }
+}
+
+.manage-item{
+    margin-bottom: 50px;
+    list-style: none;
+
+    & svg{
+        margin-right: 10px;
+    }
+
+    &:hover{
+        cursor: pointer;
+        color: v.$lightPurple;
+    }
+}

@@ -6,6 +6,12 @@
     padding-top: 20px;
 }
 
+ul {
+    margin-bottom: 0px;
+    @include m.for-mobile-landscape-down {
+        padding: 0;
+    }
+}
 .menu{
     list-style: none;
     @include m.for-tablet-landscape-up{
@@ -16,7 +22,7 @@
 
     & .menu-item{
         color: v.$darkPurple;
-        @include m.title(v.$darkPurple, 14);
+        @include m.title(v.$darkPurple, 10);
         padding-bottom: 10px
     }
     & .menu-item:hover{
@@ -26,7 +32,15 @@
 }
 
 .copyright{
+    font-family: v.$Inter;
+    color: v.$darkPink;
+}
+
+.copyright{
     margin-top: 20px;
     font-family: v.$Inter;
     color: v.$darkPink;
+    @include m.for-mobile-landscape-down{
+        font-size: 0.7rem;
+    }
 }

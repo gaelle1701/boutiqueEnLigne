@@ -1,25 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Iusers } from 'src/app/models/iusers';
 import { environment } from 'src/environments/environment';
-import { Iproducts } from '../../models/iproducts';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class UserService {
 
   API_URL = `${environment.baseURL}`;
 
-  productSubject$ = new Subject<Iproducts[]>();
+  userSubject$ = new Subject<Iusers[]>();
 
   constructor(private http: HttpClient) { }
 
-  getProducts():void {
-    this.http.get<Iproducts[]>(`${this.API_URL}/products`).subscribe(resp => {
-      this.productSubject$.next(resp)
+  getUsers(): void {
+    this.http.get<Iusers[]>(`${this.API_URL}/users`).subscribe(resp => {
+      this.userSubject$.next(resp)
     })
   }
 }
-
-

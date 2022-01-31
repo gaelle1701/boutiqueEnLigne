@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,7 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     private Role roles;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Order> ordersList;
 
     public User() {
@@ -90,11 +91,8 @@ public class User {
         this.password = password;
     }
 
-    public List<Order> getOrdersList() {
-        return ordersList;
-    }
 
-    public void setOrdersList(List<Order> ordersList) {
-        this.ordersList = ordersList;
-    }
+    public List<Order> getOrdersList() { return ordersList; }
+
+    public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }
 }

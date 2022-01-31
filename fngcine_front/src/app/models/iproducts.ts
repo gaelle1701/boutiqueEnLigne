@@ -1,5 +1,4 @@
 export interface Iproducts {
-    
     id: number;
     label: string;
     description: string;

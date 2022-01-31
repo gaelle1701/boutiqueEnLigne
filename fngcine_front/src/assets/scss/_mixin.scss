@@ -12,6 +12,12 @@
     justify-content: center;
 }
 
+@mixin flexEnd() {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 @mixin flexBetween() {
     display: flex;
     justify-content: space-between;
@@ -62,12 +68,12 @@
     }
 }
 
-@mixin separator($width, $color){
+@mixin separator($width){
     content: "";
     height: 1pt;
-    background-color: v.$color;
-    width: $width;
-    margin: 20px auto;
+    background-color: v.$darkPink;
+    max-width: $width;
+    margin: 0px auto 50px auto;
 }
 
 @mixin title($color, $fontSize) {
@@ -126,4 +132,7 @@
 }
 @mixin for-tablet-landscape-down {
     @media (max-width: 992px) { @content; }
+}
+@mixin for-mobile-landscape-down {
+    @media (max-width: 576px) { @content; }
 }

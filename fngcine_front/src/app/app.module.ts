@@ -19,11 +19,10 @@ import { LoginPageComponent } from './pages/loginPage/login-page/login-page.comp
 import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-found-page.component';
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
-import { HttpClientModule } from '@angular/common/http';
 import { IconComponent } from './components/icon/icon.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,8 +49,9 @@ import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

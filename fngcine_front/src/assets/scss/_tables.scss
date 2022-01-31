@@ -1,0 +1,57 @@
+@use './variables' as v;
+@use './mixin' as m;
+@import './shared';
+
+.table{
+    color: v.$darkPink;
+    margin: 30px 0;
+    padding: 0px 10px;
+    @include m.for-mobile-landscape-down {
+        font-size: 0.8rem
+    }
+}
+
+.table-head{
+    & tr{
+        border-bottom: solid 3px v.$darkPink;
+    }
+}
+
+.table-body{
+    color: v.$darkPurple;
+    background-color: v.$lightPink;
+    & tr{
+        border-bottom: solid 2px v.$darkPurple;
+        &:nth-child(2n) {
+        background-color: v.$lightPurple;
+    }
+    }
+    & th{
+        min-height: 80px;
+        
+    }
+}
+
+
+.table-icon{
+    @include m.flexCenter();
+    //padding: 8px;
+    min-width: 150px;
+    //margin-bottom: -3px;
+    border:none;
+    
+    @include m.for-tablet-landscape-down {
+        min-width: 0;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column; 
+
+    }
+    @include m.for-mobile-landscape-down {
+        min-height: 450px;
+    }
+}
+
+.icon{
+    padding: 0 5px;
+}
