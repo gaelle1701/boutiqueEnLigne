@@ -62,14 +62,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getOrdersByUser(Long id) {
-        List<Order> orderList = orderRepository.findAll();
+        List<Order> orderList = new ArrayList<Order>();
         Optional<User> optionalUser = userRepository.findById(id);
-        List<Order> orderListByUser = new ArrayList<Order>();
-        for (Order order : orderList) {
-            if (optionalUser.isPresent() && order.getUser().getId() == optionalUser.get().getId()){
-                orderListByUser.add(order);
-            }
+        if(optionalUser.isPresent()){
+            orderList = optionalUser.get().getOrdersList();
         }
-        return  orderListByUser;
+        return orderList;
     }
 }
