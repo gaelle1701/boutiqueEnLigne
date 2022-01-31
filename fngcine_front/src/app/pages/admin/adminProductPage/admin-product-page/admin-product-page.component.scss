@@ -1,0 +1,23 @@
+@use '../../../../../assets/scss/variables' as v;
+@use '../../../../../assets/scss/mixin' as m;
+@import '../../../../../assets/scss/shared';
+@import '../../../../../assets/scss/tables';
+
+.addProduct-btn{
+    margin: 20px 0;
+}
+
+.addProduct-link{
+    background-color: v.$darkPink;
+    color: v.$darkPurple;
+    padding: 9px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: v.$PressStart2P;
+    font-size: 0.8rem;
+    @include m.for-mobile-landscape-down {
+        font-size: 0.6rem;
+        padding: 10px 5px;
+    }
+}

@@ -8,6 +8,9 @@
 
 ul {
     margin-bottom: 0px;
+    @include m.for-mobile-landscape-down {
+        padding: 0;
+    }
 }
 .menu{
     list-style: none;

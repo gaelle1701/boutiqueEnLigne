@@ -1,1 +1,31 @@
-<p>admin-customer-page works!</p>
+<h1>Clients</h1>
+<div>
+    <a class="home-return" [routerLink]="['/admin-home']">
+        Retour <app-icon class="icon" [name]="'arrow-return-left'" [size]="1.2" [color]="'#F1AEB5'"></app-icon>
+    </a>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead class="table-head">
+            <tr class="table-tr">
+                <th *ngFor="let label of labels" class="table-th" scope="col">{{ label | titlecase }}
+                </th>
+                <th class="table-th text-center" scope="col">Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr *ngFor="let user of users">
+                <th class="table-th" scope="row">{{user.id}}</th>
+                <th class="table-th" scope="row">{{user.lastName}}</th>
+                <th class="table-th" scope="row">{{user.firstName }}</th>
+                <th class="table-th" scope="row">{{user.email}}</th>
+                <th class="table-th table-icon" scope="row">
+                    <app-icon class="icon" [name]="'pencil-square'" [size]="1.5" [routerLink]="'/home'"></app-icon>
+                    <app-icon class="icon" [name]="'trash'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
+                    <app-icon class="icon" [name]="'eye-fill'" [size]="1.5"></app-icon>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>

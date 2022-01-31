@@ -22,6 +22,7 @@ import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-car
 import { IconComponent } from './components/icon/icon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

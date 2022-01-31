@@ -34,11 +34,20 @@ h1 {
 }
 
 .home-return{
-    color: v.$darkPink;
+    color: v.$lightPink;
     text-decoration: none;
-    
+    font-family: v.$PressStart2P;
+    font-size: 0.8rem;
+    position: relative;
+    left: calc(100vw - 180px);
+
+    @include m.for-mobile-landscape-down {
+        font-size: 0.6rem;
+        left: calc(100vw - 130px);
+    }
     &:hover{
         cursor: pointer;
-        text-decoration: underline;
+        text-decoration: none;
+        color: v.$lightPurple;
     }
 }
