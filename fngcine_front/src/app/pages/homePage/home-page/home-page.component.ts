@@ -16,8 +16,8 @@ export class HomePageComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.subProducts = this.productService.subjProducts$.subscribe( res => {
-      this.productCards = res;
+    this.subProducts = this.productService.subjProducts$.subscribe( productCards => {
+      this.productCards = productCards;
       
     })
     this.productService.getListProducts();

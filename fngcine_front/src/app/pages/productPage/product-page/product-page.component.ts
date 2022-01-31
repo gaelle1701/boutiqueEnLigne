@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Iproducts } from 'src/app/models/iproducts';
 import { ProductService } from 'src/app/services/productService/product.service';
 
