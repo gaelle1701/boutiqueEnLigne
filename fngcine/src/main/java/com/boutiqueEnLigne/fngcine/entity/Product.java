@@ -36,4 +36,26 @@ public class Product {
 
     @NotNull
     private int qtyStock;
+
+    public Product(long id, String label, String description, String urlImg, String genre, float unitPrice, int qtyStock) {
+        this.id = id;
+        this.label = label;
+        this.description = description;
+        this.genre =genre;
+        this.unitPrice = unitPrice;
+        this.qtyStock = qtyStock;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", label='" + label + '\'' +
+                ", description='" + description + '\'' +
+                ", urlImg='" + urlImg + '\'' +
+                ", genre='" + genre + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", qtyStock=" + qtyStock +
+                '}';
+    }
 }
