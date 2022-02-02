@@ -32,6 +32,7 @@ insert into order_detail (id, price_by_qty, quantity, unit_price, order_id, prod
 insert into order_detail (id, price_by_qty, quantity, unit_price, order_id, product_id) values (3, 16, 2, 8, 3, 3);
 insert into order_detail (id, price_by_qty, quantity, unit_price, order_id, product_id) values (4, 60, 2, 30, 4, 4);
 insert into order_detail (id, price_by_qty, quantity, unit_price, order_id, product_id) values (5, 12, 3, 4, 5, 5);
+insert into order_detail (id, price_by_qty, quantity, unit_price, order_id, product_id) values (6, 5, 1, 5, 5, 1);
 
 insert into users_orders_list (user_id, orders_list_id) values (2, 1);
 insert into users_orders_list (user_id, orders_list_id) values (2, 2);

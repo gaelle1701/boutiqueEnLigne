@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Data
@@ -26,8 +27,8 @@ public class OrderDetail{
     @ManyToOne(fetch=FetchType.LAZY)
     private Order order;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Product product;
+    @OneToMany
+    private List<Product> productList;
 
     @NotNull
     private int quantity;

@@ -42,9 +42,6 @@ public class Order implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
 
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @ManyToOne(fetch=FetchType.LAZY)
-//    private User user;
 
 
 
