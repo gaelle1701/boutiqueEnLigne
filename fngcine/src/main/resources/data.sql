@@ -4,11 +4,17 @@ INSERT INTO roles (id, name) VALUES (2, 'USER');
 INSERT INTO deliveries (id, label, shipping_fee) VALUES (1, 'STANDARD', 2.99);
 INSERT INTO deliveries (id, label, shipping_fee) VALUES (2, 'EXPRESS', 7.99);
 
-INSERT INTO users (id, email, first_name, last_name, password, roles_id) VALUES (1, 'johndoe@mail.com', 'John', 'Doe', 'JohnAdmin22@', 1);
-INSERT INTO users (id, email, first_name, last_name, password, roles_id) VALUES (2, 'alice@mail.com', 'Alice', 'Jim', 'ALiceUser22@', 2);
-INSERT INTO users (id, email, first_name, last_name, password, roles_id) VALUES (3, 'ctommen0@cdbaby.com', 'Chloé', 'Tommen', '0KjYaR3hz6', 2);
-INSERT INTO users (id, email, first_name, last_name, password, roles_id) VALUES (4, 'bstclair1@smh.com.au', 'Bob', 'St. Clair', 'QGa0haQm', 2);
-INSERT INTO users (id, email, first_name, last_name, password, roles_id) VALUES (5, 'rbiagini2@oaic.gov.au', 'Loïc', 'Biagini', 'J55Zsh5yE', 2);
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (1, 'johndoe@mail.com', 'John', 'Doe', 'johnD', 'JohnAdmin22@');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (2, 'alice@mail.com', 'Alice', 'Jim', 'AliceJ', 'ALiceUser22@');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (3, 'ctommen0@cdbaby.com', 'Chloé', 'Tommen', 'Cloclo', '0KjYaR3hz6');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (4, 'bstclair1@smh.com.au', 'Bob', 'St. Clair', 'Bobby', 'QGa0haQm');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (5, 'rbiagini2@oaic.gov.au', 'Loïc', 'Biagini', 'Lolo', 'J55Zsh5yE');
+
+INSERT INTO user_roles(user_id, role_id) VALUES (1, 1);
+INSERT INTO user_roles(user_id, role_id) VALUES (2, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES (3, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES (4, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES (5, 2);
 
 insert into products (id, label, description, genre, unit_price, qty_stock, url_img) values (1, 'Joker', 'Le film, qui relate une histoire originale inédite sur grand écran, se focalise sur la figure emblématique de l’ennemi juré de Batman. Il brosse le portrait d’Arthur Fleck, un homme sans concession méprisé par la société.', 'Thriller', 10.99, 15, 'https://static.fnac-static.com/multimedia/Images/FR/NR/b9/b3/ae/11449273/1540-1/tsp20200106160132/Joker-DVD.jpg');
 insert into products (id, label, description, genre, unit_price, qty_stock, url_img) values (2, 'Black Widow', 'Natasha Romanoff, alias Black Widow, voit resurgir la part la plus sombre de son passé pour faire face à une redoutable conspiration liée à sa vie d’autrefois.', 'Action', 19.99, 26, 'https://static.fnac-static.com/multimedia/Images/FR/NR/67/81/d0/13664615/1540-1/tsp20210901084440/Black-Widow-DVD.jpg');
