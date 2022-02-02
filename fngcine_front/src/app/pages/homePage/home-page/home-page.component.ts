@@ -11,11 +11,11 @@ import { ProductService } from 'src/app/services/productService/product.service'
 export class HomePageComponent implements OnInit {
 
   public productCards!: Iproducts[];
-  public subProductCards: Subscription;
+  public subProduct: Subscription;
   // public productCards!: string[];
 
   constructor(private productService: ProductService) { 
-    this.subProductCards = this.productService.subProductCards$.subscribe( res => {
+    this.subProduct = this.productService.productSubject$.subscribe( res => {
       this.productCards = res;
     })
     this.productService.getListProducts();
@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subProductCards.unsubscribe();
+    this.subProduct.unsubscribe();
   }
 
 }

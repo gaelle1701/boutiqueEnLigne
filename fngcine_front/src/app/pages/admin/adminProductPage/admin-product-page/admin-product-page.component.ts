@@ -20,7 +20,7 @@ export class AdminProductPageComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.onGetProducts();
-    this.productService.getProducts();
+    this.productService.getListProducts();
   }
 
   onGetProducts() {

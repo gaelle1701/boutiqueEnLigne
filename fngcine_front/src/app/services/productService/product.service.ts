@@ -15,7 +15,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts():void {
+  getListProducts():void {
     this.http.get<Iproducts[]>(`${this.API_URL}/products`).subscribe(resp => {
       this.productSubject$.next(resp)
     })
