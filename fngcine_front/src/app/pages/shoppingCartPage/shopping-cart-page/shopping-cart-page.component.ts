@@ -19,7 +19,7 @@ export class ShoppingCartPageComponent implements OnInit {
 
   // EN ATTENTE DE VOIR POUR UN VRAI PANIER!!!!!
   ngOnInit(): void {
-    this.subProducts = this.productService.subjProducts$.subscribe( productDetails => {
+    this.subProducts = this.productService.productSubject$.subscribe( productDetails => {
       this.productDetails = productDetails;
       console.log("productDetails: ", this.productDetails);
       
