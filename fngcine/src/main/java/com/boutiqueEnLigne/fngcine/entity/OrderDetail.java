@@ -32,4 +32,58 @@ public class OrderDetail{
     @NotNull
     private int quantity;
 
+    public OrderDetail(Long id, float unitPrice, float priceByQty, int quantity) {
+        this.id = id;
+        this.unitPrice = unitPrice;
+        this.priceByQty = priceByQty;
+        this.quantity = quantity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public float getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public float getPriceByQty() {
+        return priceByQty;
+    }
+
+    public void setPriceByQty(float priceByQty) {
+        this.priceByQty = this.unitPrice * this.quantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
