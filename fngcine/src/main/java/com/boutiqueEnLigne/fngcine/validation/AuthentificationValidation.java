@@ -1,8 +1,12 @@
 package com.boutiqueEnLigne.fngcine.validation;
 
+import com.boutiqueEnLigne.fngcine.entity.Role;
 import com.boutiqueEnLigne.fngcine.security.services.UserDetailsImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class AuthentificationValidation {
 
@@ -19,23 +23,13 @@ public class AuthentificationValidation {
         return tokenUserId;
     }
 
-    public String getTokenUsername(){
-        UserDetailsImpl userDetails = getUserDetails();
-        String tokenUsername = userDetails.getUsername();
-        return tokenUsername;
-    }
+//    public String getTokenUsername(){
+//        UserDetailsImpl userDetails = getUserDetails();
+//        String tokenUsername = userDetails.getUsername();
+//        return tokenUsername;
+//    }
 
-    public void getTokenAuthority(){
-        UserDetailsImpl userDetails = getUserDetails();
-        System.out.println(userDetails.getAuthorities());
-    }
 
-    public boolean isAdmin(){
-        if (getTokenUsername().matches("^Yulanlaf56$")){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
 }
