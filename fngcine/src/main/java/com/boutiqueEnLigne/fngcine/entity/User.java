@@ -27,6 +27,10 @@ public class User {
     private String firstName;
 
     @NotBlank
+    @Size(min = 2, max = 20)
+    private String username;
+
+    @NotBlank
     @Size(max = 50)
     @Email
     private String email;
@@ -35,8 +39,11 @@ public class User {
     @Size(min= 8, max = 16)
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Role roles;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Order> ordersList;
@@ -44,9 +51,10 @@ public class User {
     public User() {
     }
 
-    public User(String lastName, String firstName, String email, String password) {
+    public User(String lastName, String username, String firstName, String email, String password) {
         this.lastName = lastName;
         this.firstName = firstName;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -69,6 +77,14 @@ public class User {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setFirstName(String firstName) {
@@ -95,4 +111,12 @@ public class User {
     public List<Order> getOrdersList() { return ordersList; }
 
     public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

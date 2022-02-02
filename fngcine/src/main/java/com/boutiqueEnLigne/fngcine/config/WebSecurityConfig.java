@@ -1,6 +1,8 @@
-/*
 package com.boutiqueEnLigne.fngcine.config;
 
+import com.boutiqueEnLigne.fngcine.security.jwt.AuthEntryPointJwt;
+import com.boutiqueEnLigne.fngcine.security.jwt.AuthTokenFilter;
+import com.boutiqueEnLigne.fngcine.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,8 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new AuthTokenFilter();
     }
 
-    //AuthenticationManagerBuilder --> permet de fournir un parent AuthenticationManager qui sera testé si AuthenticationManager n'a pas réussi à authentifier le fichier Authentification
+    //AuthenticationManagerBuilder --> permet de fournir un parent AuthenticationManager qui sera testé si AuthenticationManager n'a pas réussi à authentifier le fichier Authentification ==> ajouter des utilisateurs avec des rôles prédéfinis
     @Override
+    // Pour assigner les rôles d'administrateurs et d'utilisateurs. Ce filtre permet non seulement de créer des identifiants encodés et de les assigner à des rôles
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
@@ -56,15 +59,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // permet de configurer la sécurité basée sur le Web pour les requêtes http, il définit un schéma d'authentification en mémoire pour un utilisateur
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
+        http.cors().and()
+                // Pas besoin car utilisation de token
+                .csrf().disable()
+                //Il faut la définir, Si rien ne correspond alors 403
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                //Ne crée pas de session HTTP
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                // Pour définir les rôles
                 .authorizeRequests()
+                // définir l'association des rôles avec les pages
                 .antMatchers("/api/auth/**", "/api/products/**", "/api/deliveries/**").permitAll()
+                //
                 .anyRequest().authenticated();
+        //Personnalisation du token à partir du security filter
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }
 
 
-*/
