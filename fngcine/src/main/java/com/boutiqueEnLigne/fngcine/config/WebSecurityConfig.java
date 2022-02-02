@@ -59,9 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // permet de configurer la sécurité basée sur le Web pour les requêtes http, il définit un schéma d'authentification en mémoire pour un utilisateur
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and()
+        http.cors().and().csrf().disable()
                 // Pas besoin car utilisation de token
-                .csrf().disable()
                 //Il faut la définir, Si rien ne correspond alors 403
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 //Ne crée pas de session HTTP

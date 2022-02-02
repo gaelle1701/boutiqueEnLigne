@@ -56,6 +56,7 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        System.out.println(userDetails);
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
@@ -87,13 +88,15 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signupRequest.getUsername(),
+        User user = new User(
                 signupRequest.getLastName(),
                 signupRequest.getFirstName(),
+                signupRequest.getUsername(),
                 signupRequest.getEmail(),
                 encoder.encode(signupRequest.getPassword()));
 
-        Set<String> strRoles = signupRequest.getRole();
+        Set<String> strRoles = signupRequest.getRoles();
+        //System.out.println("ROLES =======> " + strRoles);
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
@@ -103,7 +106,7 @@ public class AuthController {
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
-                    case "admin":
+                    case "ADMIN":
                         Role adminRole = roleRepository.findByName(EnumRole.ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);

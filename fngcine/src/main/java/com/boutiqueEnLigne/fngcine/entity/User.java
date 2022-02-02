@@ -19,15 +19,15 @@ public class User {
     private Long id;
 
     @NotBlank
-    @Size(min = 2, max = 20)
+    @Size(max = 20)
     private String lastName;
 
     @NotBlank
-    @Size(min = 2, max = 20)
+    @Size(max = 20)
     private String firstName;
 
     @NotBlank
-    @Size(min = 2, max = 20)
+    @Size(max = 20)
     private String username;
 
     @NotBlank
@@ -36,7 +36,6 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(min= 8, max = 16)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -51,7 +50,7 @@ public class User {
     public User() {
     }
 
-    public User(String lastName, String username, String firstName, String email, String password) {
+    public User(String lastName, String firstName, String username, String email, String password) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
