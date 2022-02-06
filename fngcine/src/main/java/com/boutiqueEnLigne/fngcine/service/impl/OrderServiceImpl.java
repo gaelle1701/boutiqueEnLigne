@@ -21,29 +21,15 @@ public class OrderServiceImpl implements OrderService {
     private UserRepository userRepository;
 
     @Override
-    public void deleteOrder(Long id) {
-        Optional<Order> orderOptional = orderRepository.findById(id);
-        Order order = null;
-        if (orderOptional.isPresent()) {
-            order = orderOptional.get();
-            orderRepository.delete(order);
-        }
-    }
-
-    @Override
     public Order createOrder(Order order) {
         try{
             Order newOrder = orderRepository.save(order);
+            System.out.println("new order in service -----------> " + newOrder);
             return newOrder;
         }catch (Exception e){
             System.out.println(e);
             return null;
         }
-    }
-
-    @Override
-    public Order updateOrder(Order order) {
-        return orderRepository.save(order);
     }
 
     @Override
@@ -61,12 +47,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrdersByUser(Long id) {
+    public List<Order> getOrdersByUser(Long userId) {
         List<Order> orderList = new ArrayList<Order>();
-        Optional<User> optionalUser = userRepository.findById(id);
-        if(optionalUser.isPresent()){
-            orderList = optionalUser.get().getOrdersList();
+        List<Order> orders = getOrders();
+        Optional<User> optionalUser = userRepository.findById(userId);
+
+        if(optionalUser.isPresent()) {
+            for (Order order: orders) {
+                if (order.getUser().getId() == optionalUser.get().getId()) {
+                    orderList.add(order);
+                }
+            }
         }
         return orderList;
     }
+
 }

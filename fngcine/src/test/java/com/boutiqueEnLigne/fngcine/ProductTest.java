@@ -15,7 +15,6 @@ public class ProductTest {
     @Autowired
     private ProductService productService;
 
-
     Product fakeProduct = new Product();
     Long productId;
 

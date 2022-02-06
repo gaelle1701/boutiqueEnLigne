@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,48 +29,24 @@ public class OrderController {
 
     ResponseEntity responseEntity;
 
-    @GetMapping("")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<List<Order>> getOrders() {
-        List<Order> orders = orderService.getOrders();
-        return ResponseEntity.ok(orders);
-    }
-
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public Order getOrder(@PathVariable("id") Long id) {
-        return orderService.getOrder(id);
-    }
-
     @GetMapping("/user/{userId}")
-    @PreAuthorize("hasAnyAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable("userId") Long userId, AuthentificationValidation authentificationValidation) {
         List<Order> orderList = orderService.getOrdersByUser(userId);
-        if(authentificationValidation.getTokenUserId() == userId) {
+        if (authentificationValidation.getTokenUserId() == userId) {
             return new ResponseEntity<>(orderList, HttpStatus.OK);
-        }  else {
+        } else {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
 
     @PostMapping("")
-    @PreAuthorize("hasAnyAuthority('ADMIN') or hasAnyAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order newOrder = orderService.createOrder(order);
+        System.out.println("new order -------> " + newOrder);
         return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<Order> updateOrder(@PathVariable("id") Long id,@RequestBody Order orderToUpdate){
-        Order updatedOrder = orderService.updateOrder(orderToUpdate);
-        return new ResponseEntity<>(updatedOrder, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public void deleteOrderById(@PathVariable("id") Long id) {
-        orderService.deleteOrder(id);
-    }
 
 }

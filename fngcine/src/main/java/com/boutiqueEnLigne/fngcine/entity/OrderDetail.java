@@ -1,5 +1,6 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Data
@@ -18,23 +20,20 @@ public class OrderDetail{
     private Long id;
 
     @NotNull
-    private float unitPrice;
-
-    @NotNull
     private float priceByQty;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Order order;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Product product;
 
     @NotNull
     private int quantity;
 
-    public OrderDetail(Long id, float unitPrice, float priceByQty, int quantity) {
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch =FetchType.LAZY)
+    private Product product;
+
+//    @ElementCollection
+//    private Map<String, Integer> productList;
+
+    public OrderDetail(Long id, float priceByQty, int quantity) {
         this.id = id;
-        this.unitPrice = unitPrice;
         this.priceByQty = priceByQty;
         this.quantity = quantity;
     }
@@ -47,28 +46,12 @@ public class OrderDetail{
         this.id = id;
     }
 
-    public float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(float unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     public float getPriceByQty() {
         return priceByQty;
     }
 
     public void setPriceByQty(float priceByQty) {
-        this.priceByQty = this.unitPrice * this.quantity;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
+        this.priceByQty = priceByQty;
     }
 
     public Product getProduct() {

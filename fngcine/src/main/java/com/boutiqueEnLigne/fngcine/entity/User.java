@@ -1,5 +1,8 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -35,6 +38,7 @@ public class User {
     @Email
     private String email;
 
+    @JsonIgnore
     @NotBlank
     private String password;
 
@@ -44,8 +48,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List<Order> ordersList;
+
 
     public User() {
     }
@@ -107,9 +110,9 @@ public class User {
     }
 
 
-    public List<Order> getOrdersList() { return ordersList; }
-
-    public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }
+//    public List<Order> getOrdersList() { return ordersList; }
+//
+//    public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }
 
     public Set<Role> getRoles() {
         return roles;
