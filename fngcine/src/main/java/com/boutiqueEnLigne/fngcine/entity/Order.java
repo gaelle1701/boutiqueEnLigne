@@ -2,7 +2,9 @@ package com.boutiqueEnLigne.fngcine.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +14,8 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name= "orders")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order implements Serializable {
@@ -35,17 +38,11 @@ public class Order implements Serializable {
     @NotNull
     private float totalPrice;
 
-    //Prix total commande
-
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
 
-    /*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;*/
-
+    @NotNull
     private Long userId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

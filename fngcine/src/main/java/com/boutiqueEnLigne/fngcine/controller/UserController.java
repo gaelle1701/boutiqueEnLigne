@@ -46,7 +46,6 @@ public class UserController {
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     public ResponseEntity<User> updateUser(@PathVariable("userId") Long userId, @RequestBody User userToUpdate, AuthentificationValidation authentificationValidation){
         if (authentificationValidation.getTokenUserId() == userId || authentificationValidation.isAdmin()) {
-            Long id = userToUpdate.getId();
             User user = userService.getUserById(userId);
             String password = user.getPassword();
             userToUpdate.setPassword(password);

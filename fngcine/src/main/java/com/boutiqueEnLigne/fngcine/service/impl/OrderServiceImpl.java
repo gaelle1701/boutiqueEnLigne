@@ -23,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDetailService orderDetailService;
 
+    public static final float TVA = 20f;
 
     public void deleteOrder(Long id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
@@ -47,10 +48,23 @@ public class OrderServiceImpl implements OrderService {
                 order.setOrderDetailList(newOrderDetailList);
             }
             if (newOrderDetailList != null) {
+                float totalPrice = countTotalPrice(newOrderDetailList);
+                order.setTotalPrice(totalPrice);
                 System.out.println("Order créée ============================> " + newOrder);
                 orderRepository.save(order);
             }
             return newOrder;
+    }
+
+    private float countTotalPrice(List<OrderDetail> orderDetailList){
+        float totalPrice= 0;
+        float sumProductUnitPriceByQty= 0;
+        for (OrderDetail orderDetail: orderDetailList) {
+            float productUnitPriceByQty = orderDetail.getPriceByQty();
+            sumProductUnitPriceByQty += productUnitPriceByQty;
+        }
+        totalPrice = (1+TVA/100) * sumProductUnitPriceByQty;
+        return totalPrice;
     }
 
     @Override
