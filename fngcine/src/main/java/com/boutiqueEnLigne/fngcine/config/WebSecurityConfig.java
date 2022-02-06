@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // définir l'association des rôles avec les pages
                 .antMatchers("/api/auth/**", "/api/products/**", "/api/deliveries/**").permitAll()
-                //
+
                 .anyRequest().authenticated();
         //Personnalisation du token à partir du security filter
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

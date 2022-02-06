@@ -13,7 +13,6 @@ import java.util.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name= "orders")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order implements Serializable {
@@ -44,9 +43,13 @@ public class Order implements Serializable {
 
     /*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;*/
 
+    private Long userId;
 
-
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch= FetchType.LAZY)
+    private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 
 }

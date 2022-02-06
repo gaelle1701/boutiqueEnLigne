@@ -23,11 +23,11 @@ public class AuthentificationValidation {
         return tokenUserId;
     }
 
-//    public String getTokenUsername(){
-//        UserDetailsImpl userDetails = getUserDetails();
-//        String tokenUsername = userDetails.getUsername();
-//        return tokenUsername;
-//    }
+       public String getRoles(){
+        UserDetailsImpl userDetails = getUserDetails();
+        String tokenUsername = userDetails.getUsername();
+        return tokenUsername;
+    }
 
 
 

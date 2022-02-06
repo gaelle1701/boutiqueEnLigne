@@ -1,6 +1,7 @@
 package com.boutiqueEnLigne.fngcine.service;
 
 import com.boutiqueEnLigne.fngcine.entity.Order;
+import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
 
 import java.util.List;
 
@@ -10,5 +11,4 @@ public interface OrderService {
     Order updateOrder(Order order);
     Order getOrder(Long id);
     List<Order> getOrders();
-    List<Order> getOrdersByUser(Long id);
-}
+    List<Order> getOrdersByUser(Long userId);}

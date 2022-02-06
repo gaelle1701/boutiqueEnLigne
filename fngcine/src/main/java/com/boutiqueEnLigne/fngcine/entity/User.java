@@ -1,5 +1,7 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -36,6 +38,7 @@ public class User {
     private String email;
 
     @NotBlank
+    @JsonIgnore
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -43,9 +46,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
-
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List<Order> ordersList;
 
     public User() {
     }
@@ -107,9 +107,9 @@ public class User {
     }
 
 
-    public List<Order> getOrdersList() { return ordersList; }
+/*    public List<Order> getOrdersList() { return ordersList; }
 
-    public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }
+    public void setOrdersList(List<Order> ordersList) { this.ordersList = ordersList; }*/
 
     public Set<Role> getRoles() {
         return roles;
