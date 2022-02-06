@@ -8,7 +8,6 @@ import com.boutiqueEnLigne.fngcine.service.OrderService;
 import com.boutiqueEnLigne.fngcine.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.SpringServletContainerInitializer;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,19 +41,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long userId){
         User user = userRepository.getById(userId);
         List<Order> orderList = orderService.getOrdersByUser(userId);
-        /*if (user != null) {
-            for (Order order: orderList) {
-                if (order.getUser().getId() == userId)
-                    order.getUser().setId(userId);
-                    order.getUser().setPassword(null);
-                    order.getUser().setUsername(null);
-                    order.getUser().setRoles(null);
-                    order.getUser().setEmail(null);
-                    order.getUser().setFirstName(null);
-                    order.getUser().setLastName(null);
-            }*/
-            userRepository.delete(user);
-        //}
+        userRepository.delete(user);
     }
 
     @Override

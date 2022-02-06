@@ -2,7 +2,6 @@ package com.boutiqueEnLigne.fngcine.service.impl;
 
 import com.boutiqueEnLigne.fngcine.entity.Order;
 import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
-import com.boutiqueEnLigne.fngcine.entity.Product;
 import com.boutiqueEnLigne.fngcine.entity.User;
 import com.boutiqueEnLigne.fngcine.repository.OrderRepository;
 import com.boutiqueEnLigne.fngcine.repository.UserRepository;

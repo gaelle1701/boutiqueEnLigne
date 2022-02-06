@@ -12,9 +12,9 @@ INSERT INTO users (id, email, first_name, last_name, username, password) VALUES 
 INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (6, 'admin@mail.com', 'gaelleadmin', 'admin', 'admin', '$2a$10$vMl7RJBDNKhakLvL5H6whuB986ciAX8z.xTgQxhlC.93x/CMstIti');
 INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (7, 'user@mail.com', 'gaelleUser', 'user', 'user', '$2a$10$vMl7RJBDNKhakLvL5H6whuB986ciAX8z.xTgQxhlC.93x/CMstIti');
 -- Gaga1701@
-INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (8, 'flora@mail.com', 'Flora', 'Laf', 'Yulannnn56', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
-INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (9, 'florauser@mail.com', 'FloraUser', 'LafUser', 'Yulan56User', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
-INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (10, 'floraTest@mail.com', 'FloraTest', 'LafTest', 'Yulan56Test', '$2a$10$ZK03jLr0xiAxa9glJB.VvOMCLMLPvgA5uVFtrbmai5Dkh/YogCUGW');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (8, 'flora@mail.com', 'Flora', 'Laf', 'Yulan56AdminUser', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (9, 'floraadmin@mail.com', 'FloraAdmin', 'LafAdmin', 'Yulan56Admin', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (10, 'florauser@mail.com', 'FloraUser', 'LafUser', 'Yulan56User', '$2a$10$ZK03jLr0xiAxa9glJB.VvOMCLMLPvgA5uVFtrbmai5Dkh/YogCUGW');
 
 INSERT INTO user_roles(user_id, role_id) VALUES (1, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES (2, 2);

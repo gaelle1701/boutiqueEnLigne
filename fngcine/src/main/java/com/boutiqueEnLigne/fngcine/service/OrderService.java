@@ -1,7 +1,6 @@
 package com.boutiqueEnLigne.fngcine.service;
 
 import com.boutiqueEnLigne.fngcine.entity.Order;
-import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
 
 import java.util.List;
 

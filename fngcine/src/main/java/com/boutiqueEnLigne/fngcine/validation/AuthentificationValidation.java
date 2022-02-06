@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class AuthentificationValidation {
 
@@ -23,10 +24,14 @@ public class AuthentificationValidation {
         return tokenUserId;
     }
 
-       public String getRoles(){
+    public boolean isAdmin(){
         UserDetailsImpl userDetails = getUserDetails();
-        String tokenUsername = userDetails.getUsername();
-        return tokenUsername;
+        String roles = userDetails.getAuthorities().toString();
+        if (roles.contains("ADMIN")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
