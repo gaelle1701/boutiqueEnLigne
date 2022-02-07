@@ -1,5 +1,6 @@
 package com.boutiqueEnLigne.fngcine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,25 +19,27 @@ public class OrderDetail{
     private Long id;
 
     @NotNull
-    private float unitPrice;
-
-    @NotNull
     private float priceByQty;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Order order;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Product product;
 
     @NotNull
     private int quantity;
 
-    public OrderDetail(Long id, float unitPrice, float priceByQty, int quantity) {
+    @NotNull
+    private Long userId;
+
+    @NotNull
+    private boolean status = false;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Product product;
+
+    public OrderDetail(Long id, String orderDetailRef, float priceByQty, int quantity, Long userId, boolean status) {
         this.id = id;
-        this.unitPrice = unitPrice;
         this.priceByQty = priceByQty;
         this.quantity = quantity;
+        this.userId = userId;
+        this.status = status;
     }
 
     public Long getId() {
@@ -47,36 +50,8 @@ public class OrderDetail{
         this.id = id;
     }
 
-    public float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(float unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     public float getPriceByQty() {
         return priceByQty;
-    }
-
-    public void setPriceByQty(float priceByQty) {
-        this.priceByQty = this.unitPrice * this.quantity;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     public int getQuantity() {
@@ -85,5 +60,13 @@ public class OrderDetail{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

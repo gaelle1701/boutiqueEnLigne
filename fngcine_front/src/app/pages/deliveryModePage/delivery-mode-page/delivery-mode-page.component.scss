@@ -10,3 +10,6 @@
 .text-purple {
     @include m.text(v.$darkPurple, 14);
 }
+label {
+    @include m.text(v.$lightPurple, 12);
+}

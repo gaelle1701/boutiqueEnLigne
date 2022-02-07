@@ -1,7 +1,9 @@
 package com.boutiqueEnLigne.fngcine.controller;
 
 import com.boutiqueEnLigne.fngcine.entity.Order;
+import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
 import com.boutiqueEnLigne.fngcine.entity.Product;
+import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
 import com.boutiqueEnLigne.fngcine.service.UserService;
 import com.boutiqueEnLigne.fngcine.validation.AuthentificationValidation;
@@ -23,53 +25,73 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
     @Autowired
     private UserService userService;
 
-    ResponseEntity responseEntity;
+    @Autowired
+    private OrderDetailService orderDetailService;
 
-    @GetMapping("")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<List<Order>> getOrders() {
-        List<Order> orders = orderService.getOrders();
-        return ResponseEntity.ok(orders);
+    // -------------------------------- ORDER DETAIL-------------------------------------- //
+
+    // ------------ Access to identified User ------------ //
+
+    @PostMapping("/order-detail")
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail, AuthentificationValidation authentificationValidation) {
+        if (authentificationValidation.getTokenUserId() == orderDetail.getUserId()) {
+            OrderDetail newOrderDetail = orderDetailService.createOrderDetail(orderDetail);
+            return new ResponseEntity<>(newOrderDetail, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
+    // ------------ Access to Admin and identified User ------------ //
 
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public Order getOrder(@PathVariable("id") Long id) {
-        return orderService.getOrder(id);
-    }
-
-    @GetMapping("/user/{userId}")
-    @PreAuthorize("hasAnyAuthority('USER')")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable("userId") Long userId, AuthentificationValidation authentificationValidation) {
-        List<Order> orderList = orderService.getOrdersByUser(userId);
-        if(authentificationValidation.getTokenUserId() == userId) {
-            return new ResponseEntity<>(orderList, HttpStatus.OK);
-        }  else {
+    @GetMapping("/order-detail/{orderDetailId}")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    public ResponseEntity<OrderDetail> getOrderDetail(@PathVariable("orderDetailId") Long orderDetailId, AuthentificationValidation authentificationValidation) {
+        OrderDetail orderDetail = orderDetailService.getOrderDetail(orderDetailId);
+        if (authentificationValidation.getTokenUserId() == orderDetail.getUserId() || authentificationValidation.isAdmin()) {
+            return new ResponseEntity<>(orderDetail, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
 
+    // -------------------------------- ORDER -------------------------------------- //
+
+    // ------------ Access to identified User only ------------ //
+
     @PostMapping("")
-    @PreAuthorize("hasAnyAuthority('ADMIN') or hasAnyAuthority('USER')")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        Order newOrder = orderService.createOrder(order);
-        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<Order> createOrder(@RequestBody Order order, AuthentificationValidation authentificationValidation) {
+        if (authentificationValidation.getTokenUserId() == order.getUserId()) {
+            Order newOrder = orderService.createOrder(order);
+            return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+        }  else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
-    @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<Order> updateOrder(@PathVariable("id") Long id,@RequestBody Order orderToUpdate){
-        Order updatedOrder = orderService.updateOrder(orderToUpdate);
-        return new ResponseEntity<>(updatedOrder, HttpStatus.OK);
+    @GetMapping("/user/{userId}")
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable("userId") Long userId, AuthentificationValidation authentificationValidation) {
+        List<Order> orderListByUser = orderService.getOrdersByUser(userId);
+        if (authentificationValidation.getTokenUserId() == userId) {
+            return new ResponseEntity<>(orderListByUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public void deleteOrderById(@PathVariable("id") Long id) {
-        orderService.deleteOrder(id);
+    // ------------ Access to Admin only ------------ //
+
+    @GetMapping("")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<List<Order>> getOrders() {
+        List<Order> orderList = orderService.getOrders();
+        return ResponseEntity.ok(orderList);
     }
 
 }

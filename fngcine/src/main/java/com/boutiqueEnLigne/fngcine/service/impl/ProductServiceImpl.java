@@ -62,11 +62,12 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = productRepository.findAll();
         List<Product> productListByGenre = new ArrayList<Product>();
         for (Product product : productList) {
-                if (product.getGenre().contains(genre)){
-                    productListByGenre.add(product);
-                }
+            if (product.getGenre().contains(genre)){
+                productListByGenre.add(product);
             }
+        }
         return  productListByGenre;
     }
+
 }
 

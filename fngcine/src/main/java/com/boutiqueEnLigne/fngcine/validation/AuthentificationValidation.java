@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public class AuthentificationValidation {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
     public UserDetailsImpl getUserDetails(){
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -23,13 +23,14 @@ public class AuthentificationValidation {
         return tokenUserId;
     }
 
-//    public String getTokenUsername(){
-//        UserDetailsImpl userDetails = getUserDetails();
-//        String tokenUsername = userDetails.getUsername();
-//        return tokenUsername;
-//    }
-
-
-
+    public boolean isAdmin(){
+        UserDetailsImpl userDetails = getUserDetails();
+        String roles = userDetails.getAuthorities().toString();
+        if (roles.contains("ADMIN")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

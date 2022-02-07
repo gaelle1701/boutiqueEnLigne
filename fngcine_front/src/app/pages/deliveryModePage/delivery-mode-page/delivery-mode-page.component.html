@@ -4,7 +4,7 @@
     <a [routerLink]="['/shopping']">Retour</a>
 </div>
 <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-5 me-4">
         <div class="card">
             <div class="row">
                 <div class="col-md-4 col-sm-4" >
@@ -14,12 +14,12 @@
                           Livraison 
                         </label>
                     </div>
-                    <!-- <div class="form-check">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="radioDefault" id="radioExpress" checked>
                         <label class="form-check-label text-purple" for="radioExpress">
                           Livraison EXPRESS
                         </label>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-md-4 col-sm-4 text-center">
                     <div><app-icon [name]="'truck'" [size]="1.2" [color]="'#E35D6A'"></app-icon></div>
@@ -31,7 +31,41 @@
                 </div>
             </div>
         </div>
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="mt-3">
+            <div class="mb-1">
+                <label for="receiver" class="form-label">Destinataire</label>
+                <input type="text" class="form-control" id="receiver" formControlName="receiver">
+                <div *ngIf="form['receiver'].invalid && (form['receiver'].dirty || form['receiver'].touched)">
+                    <div *ngIf="form['receiver'].errors && form['receiver'].errors['required']" class="text-danger fst-italic">Le destinataire est requis</div>
+                </div>
+            </div>
+            <div class="mb-1">
+                <label for="address" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="address" formControlName="address">
+                <div *ngIf="form['address'].invalid && (form['address'].dirty || form['address'].touched)">
+                    <div *ngIf="form['address'].errors && form['address'].errors['required']" class="text-danger fst-italic">L'adresse est requise</div>
+                </div>
+            </div>
+            <div class="mb-1">
+                <label for="zipCode" class="form-label">Code postale</label>
+                <input type="zipCode" class="form-control" id="zipCode" formControlName="zipCode">
+                <div *ngIf="form['zipCode'].invalid && (form['zipCode'].dirty || form['zipCode'].touched)">
+                    <div *ngIf="form['zipCode'].errors && form['zipCode'].errors['required']" class="text-danger fst-italic">Le code postale est requis</div>
+                </div>
+            </div>
+            <div class="mb-1">
+                <label for="city" class="form-label">Ville</label>
+                <input type="city" class="form-control" id="city" formControlName="city">
+                <div *ngIf="form['city'].invalid && (form['city'].dirty || form['city'].touched)">
+                    <div *ngIf="form['city'].errors && form['city'].errors['required']" class="text-danger fst-italic">La ville est requise</div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn-pink" [disabled]="addressForm.invalid">Valider</button>
+            </div>
+        </form>
     </div>
+
     <div class="col-md-5">
       <app-shopping-summary></app-shopping-summary>
     </div>
