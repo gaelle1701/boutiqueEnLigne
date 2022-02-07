@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Iproducts } from '../../models/iproducts';
 
@@ -9,17 +9,20 @@ import { Iproducts } from '../../models/iproducts';
 })
 export class ProductService {
 
-  API_URL = `${environment.baseURL}`;
-
   productSubject$ = new Subject<Iproducts[]>();
 
   constructor(private http: HttpClient) { }
 
   getListProducts():void {
-    this.http.get<Iproducts[]>(`${this.API_URL}/products`).subscribe(resp => {
-      this.productSubject$.next(resp)
+    this.http.get<Iproducts[]>(`${environment.baseURL}/products`).subscribe(resp => {
+      this.productSubject$.next(resp);
     })
   }
+
+  getProductById(id: string): Observable<Iproducts> {    
+    return this.http.get<Iproducts>(`${environment.baseURL}/products/${parseInt(id, 10)}`);
+  }
+
 }
 
 

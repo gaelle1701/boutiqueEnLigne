@@ -4,8 +4,10 @@
 
 .card {
     @include m.rounded();
-    background-color: v.$lightPurple;
-    padding: 20px;
+    background-color: v.$lightPink;
+}
+.sub-title-purple {
+    @include m.title(v.$darkPurple, 14);
 }
 .text-purple {
     @include m.text(v.$darkPurple, 14);

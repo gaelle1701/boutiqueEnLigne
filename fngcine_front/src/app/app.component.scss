@@ -2,10 +2,10 @@
 @use '../assets/scss/mixin' as m;
 @import '../assets/scss/shared';
 
-.main{
-    min-height: calc(100vh - 240px); 
+h1.mainTitle {
+    @include m.title(v.$lightPink, 18)
 }
 
-// h1.mainTitle {
-//     @include m.title(v.$lightPink, 18)
-// }
+.main {
+    min-height: calc(100vh - 95px); 
+}

@@ -1,15 +1,18 @@
-<div class="card card-custom card-bg mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ productCards.urlImg }}" class="img-fluid rounded-start" alt="{{ productCards.label }}">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body text-center">
-          <h5 class="card-title textPink">{{ productCards.label }}</h5>
-          <h5 class="card-title textPink">{{ productCards.unitPrice }}</h5>
-          <p class="card-text textPurple">{{ productCards.description }}</p>
-          <button class="btn btn-valid">Ajouter</button>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-5 col-sm-5">
+      <img src="{{ productCards.urlImg }}" class="img-fluid rounded-start" alt="{{ productCards.label }}">
+    </div>
+    <div class="col-md-7 col-sm-7">
+      <div class="card-body text-center">
+        <h5 class="card-title text-hidden textPink">{{ productCards.label }}</h5>
+        <h5 class="card-title textPink">{{ productCards.unitPrice }} €</h5>
+        <p class="card-text text-hidden textPurple">{{ productCards.description }}</p>
+        <div class="d-flex justify-content-around my-2">
+          <button [routerLink]="['/products', productCards.id]" routerLinkActive="router-link-active"  class="btn btn-pink">Voir</button>
+          <button class="btn btn-purple" [routerLink]="['/shopping']" routerLinkActive="router-link-active">Ajouter</button>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -1,1 +1,16 @@
-<p>shopping-cart-page works!</p>
+<h1 class="text-center">Ton panier</h1>
+<div class="back-link">
+    <app-icon [name]="'arrow-left'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
+    <a [routerLink]="['/']" >Retour</a>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="col" *ngFor="let detail of productDetails">
+            <app-product-detail [productDetails]="detail"></app-product-detail>
+        </div>
+    </div>
+    <div class="col-md-5">
+      <app-shopping-summary></app-shopping-summary>
+    </div>
+  </div>
+  

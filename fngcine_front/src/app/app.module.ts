@@ -22,6 +22,8 @@ import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-car
 import { IconComponent } from './components/icon/icon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
+import { ProductDetailComponent } from './components/productDetail/product-detail/product-detail.component';
+import { ShoppingSummaryComponent } from './components/shoppingSummary/shopping-summary/shopping-summary.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -43,6 +45,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NotFoundPageComponent,
     ProductPageComponent,
     ShoppingCartPageComponent,
+    ProductDetailComponent,
+    ShoppingSummaryComponent,
     IconComponent,
     SignupPageComponent,
   ],
