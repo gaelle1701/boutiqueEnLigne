@@ -31,7 +31,15 @@ public class Order implements Serializable {
 
     @NotBlank
     @Size(min = 2, max = 80)
-    private String deliveryAddress;
+    private String address;
+
+    @NotBlank
+    @Size(min = 2, max = 10)
+    private int zipCode;
+
+    @NotBlank
+    @Size(min = 2, max = 80)
+    private String city;
 
     @NotNull
     private float totalPrice;
