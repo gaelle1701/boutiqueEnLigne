@@ -38,6 +38,18 @@ public class Order implements Serializable {
     @NotNull
     private float totalPrice;
 
+    @NotBlank
+    @Size(min = 2, max = 80)
+    private String address;
+
+    @NotBlank
+    @Size(min = 2, max = 10)
+    private int zipCode;
+
+    @NotBlank
+    @Size(min = 2, max = 80)
+    private String city;
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
