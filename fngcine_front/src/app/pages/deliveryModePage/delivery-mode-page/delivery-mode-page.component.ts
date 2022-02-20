@@ -33,9 +33,11 @@ export class DeliveryModePageComponent implements OnInit {
     })
     this.deliveryService.getListDeliveries();
   }
+  
 
   initForm() {
     this.addressForm = new FormGroup({
+      deliveryMode: new FormControl('STANDARD', Validators.required),
       receiver: new FormControl('',[Validators.required, Validators.minLength(2)]),
       address: new FormControl('',[Validators.required, Validators.minLength(2)]),
       zipCode: new FormControl('',[Validators.required, Validators.minLength(2)]),
@@ -43,17 +45,20 @@ export class DeliveryModePageComponent implements OnInit {
     })
   }
 
-  get form(): { [key: string]: AbstractControl } {
+  get form(): { [key: string]: AbstractControl } { 
     return this.addressForm.controls;
   }
 
   onSubmit() {
-
+    console.log('deliveryMode ---------> ' + this.addressForm.get('deliveryMode')?.value);
+    console.log('receiver ---------> ' + this.addressForm.get('receiver')?.value);
+    console.log('city ---------> ' + this.addressForm.get('city')?.value);
+    this.submitted = true;
   }
 
   ngOnDestroy(): void {
     this.subDeliveries.unsubscribe();
-    this.submitted = true;
+    this.submitted = false;
   }
 
 }
