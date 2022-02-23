@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeliveryFormPageComponent } from './delivery-form-page.component';
+import { LayoutAuthComponent } from './layout-auth.component';
 
-describe('DeliveryFormPageComponent', () => {
-  let component: DeliveryFormPageComponent;
-  let fixture: ComponentFixture<DeliveryFormPageComponent>;
+describe('LayoutAuthComponent', () => {
+  let component: LayoutAuthComponent;
+  let fixture: ComponentFixture<LayoutAuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliveryFormPageComponent ]
+      declarations: [ LayoutAuthComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeliveryFormPageComponent);
+    fixture = TestBed.createComponent(LayoutAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

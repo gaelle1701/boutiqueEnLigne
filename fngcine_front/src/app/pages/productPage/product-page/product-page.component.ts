@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Iproducts } from 'src/app/models/iproducts';
 import { ProductService } from 'src/app/services/productService/product.service';
 
@@ -10,21 +10,23 @@ import { ProductService } from 'src/app/services/productService/product.service'
 })
 export class ProductPageComponent implements OnInit {
 
-  public product!: Iproducts;
-  
+  product!: any;
+  id: any;
   constructor(private productService: ProductService, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const routeParams = this.actRoute.snapshot.paramMap;
+    this.actRoute.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        console.log(this.id);
 
-    const productId = routeParams.get('id')
-    if (productId) {
-      this.productService.getProductById(productId).subscribe( product => {
-        this.product = product;
-        console.log(this.product);
-        
-      }) 
-    }
+        this.productService.getProductById(this.id).subscribe(product => {
+      console.log(product);
+      
+    this.product = product;
+
+      })
+    })
 
   }
 

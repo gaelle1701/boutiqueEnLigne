@@ -9,14 +9,13 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  API_URL = `${environment.baseURL}`;
 
   userSubject$ = new Subject<Iusers[]>();
 
   constructor(private http: HttpClient) { }
 
   getUsers(): void {
-    this.http.get<Iusers[]>(`${this.API_URL}/users`).subscribe(resp => {
+    this.http.get<Iusers[]>(`${environment.baseURL}/users`).subscribe(resp => {
       this.userSubject$.next(resp)
     })
   }

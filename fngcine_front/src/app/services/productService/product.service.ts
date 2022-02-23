@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Iproducts } from '../../models/iproducts';
 
@@ -19,8 +20,10 @@ export class ProductService {
     })
   }
 
-  getProductById(id: string): Observable<Iproducts> {    
-    return this.http.get<Iproducts>(`${environment.baseURL}/products/${parseInt(id, 10)}`);
+  getProductById(productId: number){    
+    return this.http.get<Iproducts>(`${environment.baseURL}/products/${productId}`).pipe(
+      catchError(error => of([]))
+    )
   }
 
 }

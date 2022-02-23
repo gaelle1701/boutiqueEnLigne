@@ -1,7 +1,8 @@
 <h1 class="text-center">Ton panier</h1>
-<div class="back-link">
-    <app-icon [name]="'arrow-left'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
-    <a [routerLink]="['/']" >Retour</a>
+<div>
+    <a class="home-return" [routerLink]="['/admin-home']">
+        Retour <app-icon class="icon" [name]="'arrow-return-left'" [size]="1.2" [color]="'#F1AEB5'"></app-icon>
+    </a>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-6">

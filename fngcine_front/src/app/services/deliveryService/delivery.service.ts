@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 export class DeliveryService {
 
   subjDeliveries$ = new Subject<Idelivery[]>();
-  // subjDelivery$ = new Subject<Idelivery>();
 
   constructor(private http: HttpClient) { }
 

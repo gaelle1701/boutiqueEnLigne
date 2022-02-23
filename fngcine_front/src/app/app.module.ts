@@ -12,7 +12,6 @@ import { AdminHomePageComponent } from './pages/admin/adminHomePage/admin-home-p
 import { AdminOrderPageComponent } from './pages/admin/adminOrderPage/admin-order-page/admin-order-page.component';
 import { AdminProductPageComponent } from './pages/admin/adminProductPage/admin-product-page/admin-product-page.component';
 import { OrderDetailPageComponent } from './pages/admin/orderDetailPage/order-detail-page/order-detail-page.component';
-import { DeliveryFormPageComponent } from './pages/deliveryFormPage/delivery-form-page/delivery-form-page.component';
 import { DeliveryModePageComponent } from './pages/deliveryModePage/delivery-mode-page/delivery-mode-page.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
 import { LoginPageComponent } from './pages/loginPage/login-page/login-page.component';
@@ -24,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
 import { ProductDetailComponent } from './components/productDetail/product-detail/product-detail.component';
 import { ShoppingSummaryComponent } from './components/shoppingSummary/shopping-summary/shopping-summary.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { LayoutAuthComponent } from './components/layout-auth/layout-auth.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AdminOrderPageComponent,
     AdminProductPageComponent,
     OrderDetailPageComponent,
-    DeliveryFormPageComponent,
     DeliveryModePageComponent,
     HomePageComponent,
     LoginPageComponent,
@@ -49,6 +48,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ShoppingSummaryComponent,
     IconComponent,
     SignupPageComponent,
+    LayoutAuthComponent,
   ],
   imports: [
     BrowserModule,
