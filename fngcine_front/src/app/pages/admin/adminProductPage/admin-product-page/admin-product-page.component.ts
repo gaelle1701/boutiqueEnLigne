@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ChildActivationStart, Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Iproducts } from 'src/app/models/iproducts';
 import { ProductService } from 'src/app/services/productService/product.service';
@@ -34,9 +34,14 @@ export class AdminProductPageComponent implements OnInit, OnDestroy {
     })
   }
 
-  onGetKeys() {
-    
+  deleteProduct(productId: any) {
+    this.productService.deleteRecipe(productId).subscribe(resp => {
+      console.log('le produit  a bien été supprimé');
+      this.productService.getListProducts();
+    });
   }
+
+  
 
   ngOnDestroy() {
     this.productSub?.unsubscribe();

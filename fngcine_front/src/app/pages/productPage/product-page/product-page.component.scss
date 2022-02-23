@@ -1,0 +1,24 @@
+@use '../../../../assets/scss/variables' as v;
+@use '../../../../assets/scss/mixin' as m;
+@import '../../../../assets/scss/shared';
+
+.card {
+    @include m.rounded();
+    background-color: v.$lightPurple;
+}
+.btn-pink{
+    @include m.buttonPink();
+}
+.text-pink{
+    @include m.text(v.$darkPink, 18);
+}
+.text-purple{
+    @include m.text(v.$darkPurple, 14);
+}
+
+.title-purple {
+    @include m.title(v.$darkPurple, 14);
+}
+.img-fluid {
+   max-width: 70% !important;
+}

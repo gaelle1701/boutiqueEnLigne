@@ -51,3 +51,12 @@ h1 {
         color: v.$lightPurple;
     }
 }
+
+.return{
+    color: v.$darkPink;
+    text-decoration: none;
+
+    &:hover{
+        color: v.$lightPurple;
+    }
+}

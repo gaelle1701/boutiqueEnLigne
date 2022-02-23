@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { any } from 'underscore';
 import { AuthService } from '../services/authService/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminAuthGuard implements CanActivate {
 
   constructor(private router: Router, private authService: AuthService) { }
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('TOKEN_APPLI');
-
-    if (token) {
-      console.log("token trouvé, ok guard !");
-      return true;
+    const tokenRole = this.authService.getTokenRoles();
+    console.log(tokenRole);
+    let authorization: boolean;
+    let admin = tokenRole.find((role:any) => role.authority == "ADMIN");
+    if (admin) {
+      authorization = true;
     } else {
-      console.log('Pas de token, no guard');
-      this.router.navigate(['/login']);
-      return false;
+      authorization = false;
+
+      this.router.navigate(['/home/']);
     }
+    return authorization;
   }
 }

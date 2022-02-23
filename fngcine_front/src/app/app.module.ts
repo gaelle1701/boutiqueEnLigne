@@ -12,7 +12,6 @@ import { AdminHomePageComponent } from './pages/admin/adminHomePage/admin-home-p
 import { AdminOrderPageComponent } from './pages/admin/adminOrderPage/admin-order-page/admin-order-page.component';
 import { AdminProductPageComponent } from './pages/admin/adminProductPage/admin-product-page/admin-product-page.component';
 import { OrderDetailPageComponent } from './pages/admin/orderDetailPage/order-detail-page/order-detail-page.component';
-import { DeliveryFormPageComponent } from './pages/deliveryFormPage/delivery-form-page/delivery-form-page.component';
 import { DeliveryModePageComponent } from './pages/deliveryModePage/delivery-mode-page/delivery-mode-page.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
 import { LoginPageComponent } from './pages/loginPage/login-page/login-page.component';
@@ -22,7 +21,15 @@ import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-car
 import { IconComponent } from './components/icon/icon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { LayoutAuthComponent } from './components/layout-auth/layout-auth.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Placement as PopperPlacement, Options } from '@popperjs/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -36,7 +43,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AdminOrderPageComponent,
     AdminProductPageComponent,
     OrderDetailPageComponent,
-    DeliveryFormPageComponent,
     DeliveryModePageComponent,
     HomePageComponent,
     LoginPageComponent,
@@ -45,15 +51,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ShoppingCartPageComponent,
     IconComponent,
     SignupPageComponent,
+    LayoutAuthComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

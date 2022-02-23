@@ -1,2 +1,7 @@
 @use '../../../../assets/scss/variables' as v;
 @use '../../../../assets/scss/mixin' as m;
+@import '../../../../assets/scss/shared';
+
+.text-l-purple{
+    @include m.text(v.$lightPurple, 18);
+}

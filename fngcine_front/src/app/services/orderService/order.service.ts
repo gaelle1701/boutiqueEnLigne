@@ -9,14 +9,12 @@ import { Iorders } from '../../models/iorders'
 })
 export class OrderService {
 
-  API_URL = `${environment.baseURL}`;
-
   orderSubject$ = new Subject<Iorders[]>();
 
   constructor(private http: HttpClient) { }
 
   getOrders() {
-    this.http.get<Iorders[]>(`${this.API_URL}/orders?limit=5`).subscribe(resp => {
+    this.http.get<Iorders[]>(`${`${environment.baseURL}`}/orders?limit=5`).subscribe(resp => {
       this.orderSubject$.next(resp)
     })
   }
