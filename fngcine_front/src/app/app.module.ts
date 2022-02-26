@@ -25,6 +25,10 @@ import { ProductDetailComponent } from './components/productDetail/product-detai
 import { ShoppingSummaryComponent } from './components/shoppingSummary/shopping-summary/shopping-summary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutAuthComponent } from './components/layout-auth/layout-auth.component';
+import { registerLocaleData } from '@angular/common';
+import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -49,6 +53,7 @@ import { LayoutAuthComponent } from './components/layout-auth/layout-auth.compon
     IconComponent,
     SignupPageComponent,
     LayoutAuthComponent,
+    ConfirmationPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,3 +66,7 @@ import { LayoutAuthComponent } from './components/layout-auth/layout-auth.compon
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+function localeFr(localeFr: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+

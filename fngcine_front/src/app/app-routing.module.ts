@@ -8,31 +8,38 @@ import { AdminCustomerPageComponent } from './pages/admin/adminCustomerPage/admi
 import { AdminHomePageComponent } from './pages/admin/adminHomePage/admin-home-page/admin-home-page.component';
 import { AdminOrderPageComponent } from './pages/admin/adminOrderPage/admin-order-page/admin-order-page.component';
 import { AdminProductPageComponent } from './pages/admin/adminProductPage/admin-product-page/admin-product-page.component';
+import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
 import { DeliveryModePageComponent } from './pages/deliveryModePage/delivery-mode-page/delivery-mode-page.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
 import { LoginPageComponent } from './pages/loginPage/login-page/login-page.component';
+import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-found-page.component';
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
 
 
 const routes: Routes = [
-
+  
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'products/:id', component: ProductPageComponent },
   { path: 'shopping', component: ShoppingCartPageComponent },
+
   { path: '', canActivate: [AuthGuard], component: LayoutAuthComponent, children: [
     { path: 'admin-home', canActivate: [AdminAuthGuard], component: AdminHomePageComponent },
+    { path: 'confirmation-payment', component: ConfirmationPageComponent },
     { path: 'delivery-mode', component: DeliveryModePageComponent },
     { path: 'admin-order', component: AdminOrderPageComponent },
     { path: 'admin-product', component: AdminProductPageComponent },
     { path: 'admin-customer', component: AdminCustomerPageComponent },
     { path: 'add-product', component: AddProductPageComponent },
     { path: 'add-product/:id', component: AddProductPageComponent },
-    ]
-  }
+  ]},
+
+  { path: 'notfound', component: NotFoundPageComponent},
+  { path: '**', redirectTo: 'notfound'}
 ]
 
 @NgModule({

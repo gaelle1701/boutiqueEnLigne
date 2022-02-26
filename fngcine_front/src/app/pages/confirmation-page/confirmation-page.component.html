@@ -1,0 +1,26 @@
+<h1 class="text-center">Merci de votre achat!
+    <app-icon class="smile-icon" [name]="'emoji-smile-upside-down-fill'" [size]="1.4" [color]="'#F1AEB5'"></app-icon>
+</h1>
+<div>
+    <a class="home-return" [routerLink]="['/home']">
+        Retour <app-icon class="icon" [name]="'arrow-return-left'" [size]="1.2" [color]="'#F1AEB5'"></app-icon>
+    </a>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="card col-6 py-4 px-4">
+        <p>La facture de votre commande vous a été envoyée à l'adresse suivante:</p>
+        <div class="d-flex">
+            <svg width="18" height="22" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12.5574 12.5574L22 20.8227C20.8227 22.1635 19.4166 23.214 17.7815 23.9744C16.1464 24.7347 14.4051 25.1148 12.5574 25.1148C10.8569 25.1148 9.23003 24.7837 7.6767 24.1215C6.12337 23.4593 4.7867 22.5682 3.66667 21.4482C2.54664 20.3281 1.65552 18.9915 0.993311 17.4381C0.331104 15.8848 0 14.2579 0 12.5574C0 10.8569 0.331104 9.23003 0.993311 7.6767C1.65552 6.12337 2.54664 4.7867 3.66667 3.66667C4.7867 2.54664 6.12337 1.65552 7.6767 0.993311C9.23003 0.331104 10.8569 0 12.5574 0C14.4051 0 16.1464 0.380156 17.7815 1.14047C19.4166 1.90078 20.8227 2.95132 22 4.29208L12.5574 12.5574Z"
+                    fill="#E35D6A" />
+            </svg>
+            <p class="textPink ps-3">Email du user connecté</p>
+        </div>
+        <div class="d-flex">
+            <p class="pe-3">Vous pouvez également la télécharger </p>
+            <app-icon [name]="'cloud-download-fill'" [size]="1.2" [color]="'#E35D6A'"></app-icon>
+        </div>
+    </div>
+</div>
+

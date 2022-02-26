@@ -1,0 +1,16 @@
+@use '../../../assets/scss/variables' as v;
+@use '../../../assets/scss/mixin' as m;
+@import '../../../assets/scss/shared';
+
+.card {
+    @include m.rounded();
+    background-color: v.$lightPurple;
+    padding: 20px;
+}
+.text-purple {
+    @include m.text(v.$darkPurple, 14);
+}
+.textPink{
+    @include m.text(v.$darkPink, 16);
+    font-weight: bold;
+}
