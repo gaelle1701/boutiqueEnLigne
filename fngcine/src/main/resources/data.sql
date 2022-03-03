@@ -39,11 +39,11 @@ insert into products (id, label, description, release_date, genre, unit_price, q
 insert into products (id, label, description, release_date, genre, unit_price, qty_stock, url_img) values (9, 'Joyeuse retraite !', 'L’heure de la retraite est enfin arrivée pour Philippe et Marilou ! Ils s’apprêtent à réaliser leur rêve : partir vivre sous le soleil du Portugal.', '2021-08-01', 'Comédie', 9.99, 5, 'https://static.fnac-static.com/multimedia/Images/FR/NR/bf/3a/b0/11549375/1540-1/tsp20200117164136/Joyeuse-retraite-DVD.jpg');
 insert into products (id, label, description, release_date, genre, unit_price, qty_stock, url_img) values (10, 'La daronne', 'Patience Portefeux est interprète judiciaire francoarabe, spécialisée dans les écoutes téléphoniques pour la brigade des Stups.', '2021-09-01', 'Comédie', 16.99, 34, 'https://static.fnac-static.com/multimedia/Images/FR/NR/36/76/c3/12809782/1540-1/tsp20201029125053/La-Daronne-DVD.jpg');
 
-insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (1, '17 avenue des fleurs', 75001, 'Paris', '2021-11-05', 'Mme Jim', 22.5, 1, 10);
-insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (2, '3 bis rue du soleil', 13002,'Marseille', '2021-10-24', 'Mme Jim', 26.5, 1, 3);
-insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (3, '67 rue des loups', 29200, 'Brest', '2021-01-07', 'Chloé', 18.5, 1, 4);
-insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (4, '24 boulevard des roses', 93100, 'Montreuil', '2021-05-15', 'Bob', 67.5, 2, 5);
-insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (5, '4 place du Général', 67000, 'Strasbourg', '2021-02-12', 'Mr Biagini', 19.5, 2, 2);
+insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (1, '17 avenue des fleurs', '75001', 'Paris', '2021-11-05', 'Mme Jim', 22.5, 1, 10);
+insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (2, '3 bis rue du soleil', '13002','Marseille', '2021-10-24', 'Mme Jim', 26.5, 1, 3);
+insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (3, '67 rue des loups', '29200', 'Brest', '2021-01-07', 'Chloé', 18.5, 1, 4);
+insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (4, '24 boulevard des roses', '93100', 'Montreuil', '2021-05-15', 'Bob', 67.5, 2, 5);
+insert into orders (id, address, zip_code, city, order_date, receiver, total_price, delivery_id, user_id) values (5, '4 place du Général', '67000', 'Strasbourg', '2021-02-12', 'Mr Biagini', 19.5, 2, 2);
 
 insert into order_detail (id, price_by_qty, product_id, quantity, user_id, status) values (1, 20, 1, 2, 10, true);
 insert into order_detail (id, price_by_qty, product_id, quantity, user_id, status) values (2, 24, 1, 1, 3, true);

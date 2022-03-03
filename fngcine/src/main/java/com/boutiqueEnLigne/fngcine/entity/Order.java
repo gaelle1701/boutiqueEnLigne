@@ -35,7 +35,7 @@ public class Order implements Serializable {
 
     @NotBlank
     @Size(min = 2, max = 10)
-    private int zipCode;
+    private String zipCode;
 
     @NotBlank
     @Size(min = 2, max = 80)
@@ -50,8 +50,9 @@ public class Order implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;
 
-    @NotNull
-    private Long userId;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch= FetchType.LAZY)
+    private User user;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch= FetchType.LAZY)

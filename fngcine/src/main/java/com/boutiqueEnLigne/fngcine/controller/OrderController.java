@@ -3,6 +3,7 @@ package com.boutiqueEnLigne.fngcine.controller;
 import com.boutiqueEnLigne.fngcine.entity.Order;
 import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
 import com.boutiqueEnLigne.fngcine.entity.Product;
+import com.boutiqueEnLigne.fngcine.entity.User;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
 import com.boutiqueEnLigne.fngcine.service.UserService;
@@ -31,6 +32,11 @@ public class OrderController {
 
     @Autowired
     private OrderDetailService orderDetailService;
+
+//    @Autowired
+//    private SimpleMailMessage email;
+
+    ResponseEntity responseEntity;
 
     // -------------------------------- ORDER DETAIL-------------------------------------- //
 
@@ -66,9 +72,13 @@ public class OrderController {
     @PostMapping("")
     @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Order> createOrder(@RequestBody Order order, AuthentificationValidation authentificationValidation) {
-        if (authentificationValidation.getTokenUserId() == order.getUserId()) {
-            Order newOrder = orderService.createOrder(order);
-            return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+        Long tokenUserId = authentificationValidation.getTokenUserId();
+        User user = userService.getUserById(authentificationValidation.getTokenUserId());
+        order.setUser(user);
+        Long userIdOrder = order.getUser().getId();
+        if (tokenUserId == userIdOrder) {
+            orderService.createOrder(order);
+            return new ResponseEntity<>(order, HttpStatus.CREATED);
         }  else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
