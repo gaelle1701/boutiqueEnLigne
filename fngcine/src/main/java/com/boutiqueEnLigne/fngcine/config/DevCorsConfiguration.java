@@ -12,4 +12,6 @@ public class DevCorsConfiguration implements WebMvcConfigurer {
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .exposedHeaders("Authorization");
     }
+
+
 }

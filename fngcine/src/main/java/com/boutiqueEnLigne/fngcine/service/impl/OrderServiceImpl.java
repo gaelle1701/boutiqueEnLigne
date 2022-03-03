@@ -7,6 +7,7 @@ import com.boutiqueEnLigne.fngcine.repository.OrderRepository;
 import com.boutiqueEnLigne.fngcine.repository.UserRepository;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
+import com.boutiqueEnLigne.fngcine.validation.AuthentificationValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDetailService orderDetailService;
 
+    private AuthentificationValidation authentificationValidation;
+
     public static final float TVA = 20f;
 
     public void deleteOrder(Long id) {
@@ -36,11 +39,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
-        List<OrderDetail> orderDetailList = orderDetailService.getOrderDetailsByUser(order.getUserId());
+        /*Long userId = authentificationValidation.getTokenUserId();
+        System.out.println("userId ------------------> " + userId);
+        User currentUser = userRepository.getById(userId);
+        System.out.println("currentUser ---------------------> " + currentUser);
+        order.setUser(currentUser);*/
+        List<OrderDetail> orderDetailList = orderDetailService.getOrderDetailsByUser(order.getUser().getId());
         List<OrderDetail> newOrderDetailList = new ArrayList<>();
         Order newOrder = new Order();
             for (OrderDetail orderDetail: orderDetailList) {
-                if (orderDetail.isStatus()==false){
+                if (!orderDetail.isStatus()){
                     orderDetail.setStatus(true);;
                     orderDetailService.updateOrderDetail(orderDetail);
                     newOrderDetailList.add(orderDetail);
@@ -50,9 +58,9 @@ public class OrderServiceImpl implements OrderService {
             if (newOrderDetailList != null) {
                 float totalPrice = countTotalPrice(newOrderDetailList);
                 order.setTotalPrice(totalPrice);
-                System.out.println("Order créée ============================> " + newOrder);
                 orderRepository.save(order);
             }
+            System.out.println("Order créée ============================> " + newOrder);
             return newOrder;
     }
 
@@ -93,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<User> optionalUser = userRepository.findById(userId);
         if(optionalUser.isPresent()){
             for (Order order: orders) {
-                if (order.getUserId() == optionalUser.get().getId()){
+                if (order.getUser().getId() == optionalUser.get().getId()){
                     orderList.add(order);
                 }
             }

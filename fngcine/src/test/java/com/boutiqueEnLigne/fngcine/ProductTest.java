@@ -15,18 +15,16 @@ public class ProductTest {
     @Autowired
     private ProductService productService;
 
-
     Product fakeProduct = new Product();
     Long productId;
 
     public void setFakeProduct(){
         fakeProduct.setId(11L);
         fakeProduct.setLabel("La petite Sirène");
-        fakeProduct.setDescription("une histoire de queues de poisson");
+        fakeProduct.setDescription("une histoire de sirène");
         fakeProduct.setGenre("X");
         fakeProduct.setUnitPrice(5.99f);
         fakeProduct.setQtyStock(10);
-
         productService.createProduct(fakeProduct);
         productId= fakeProduct.getId();
     }
@@ -58,8 +56,6 @@ public class ProductTest {
                 "Did not find the expected product in the productList");
         Assertions.assertNotNull(productService.getProduct((productId)));
     }
-
-
 
     @Test
     @Order(3)

@@ -4,6 +4,7 @@ import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
 import com.boutiqueEnLigne.fngcine.repository.OrderDetailRepository;
 import com.boutiqueEnLigne.fngcine.repository.OrderRepository;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
+import com.boutiqueEnLigne.fngcine.validation.AuthentificationValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Autowired
     OrderDetailRepository orderDetailRepository;
 
+    AuthentificationValidation authentificationValidation;
+
+
     @Override
     public OrderDetail createOrderDetail(OrderDetail orderDetail) {
         return orderDetailRepository.save(orderDetail);
@@ -28,6 +32,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         List<OrderDetail> orderDetailListByUser = new ArrayList<>();
             for (OrderDetail orderDetail: orderDetailList) {
                 if (orderDetail.getUserId() == userId){
+                    /*System.out.println("----------------> USER" + orderDetail.getUserId());
+                    System.out.println("----------------> USER" + userId);*/
                     orderDetailListByUser.add(orderDetail);
                 }
         }

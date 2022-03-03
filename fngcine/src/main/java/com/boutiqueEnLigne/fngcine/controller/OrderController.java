@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -27,6 +28,11 @@ public class OrderController {
 
     @Autowired
     private OrderDetailService orderDetailService;
+
+    @Autowired
+    private SimpleMailMessage email;
+
+    ResponseEntity responseEntity;
 
     // -------------------------------- ORDER DETAIL-------------------------------------- //
 
@@ -62,9 +68,13 @@ public class OrderController {
     @PostMapping("")
     @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Order> createOrder(@RequestBody Order order, AuthentificationValidation authentificationValidation) {
-        if (authentificationValidation.getTokenUserId() == order.getUserId()) {
-            Order newOrder = orderService.createOrder(order);
-            return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+        Long tokenUserId = authentificationValidation.getTokenUserId();
+        User user = userService.getUserById(authentificationValidation.getTokenUserId());
+        order.setUser(user);
+        Long userIdOrder = order.getUser().getId();
+        if (tokenUserId == userIdOrder) {
+            orderService.createOrder(order);
+            return new ResponseEntity<>(order, HttpStatus.CREATED);
         }  else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

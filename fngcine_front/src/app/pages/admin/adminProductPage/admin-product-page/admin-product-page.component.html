@@ -29,7 +29,7 @@
                 <th class="table-th text-center"scope="row">{{product.unitPrice}}€</th>
                 <th class="table-th text-center"scope="row">{{product.qtyStock}}</th>
                 <th class="table-th table-icon"scope="row">
-                        <app-icon class="icon" [name]="'pencil-square'" [size]="1.5" [routerLink]="'/home'"></app-icon>
+                        <app-icon class="icon" [name]="'pencil-square'" [size]="1.5" [routerLink]="['/add-product', product.id]"></app-icon>
                         <app-icon (click)="deleteProduct(product.id)" class="icon" [name]="'trash'" [size]="1.5" [color]="'#E35D6A'"></app-icon>
                         <app-icon [routerLink]="['/products', product.id]" class="icon" [name]="'eye-fill'" [size]="1.5"></app-icon>
                 </th>

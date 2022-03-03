@@ -21,6 +21,7 @@
                 <div class="col-md-4 mobile">
                     <div class="form-group">
                         <label for="releaseDate" class="form-label">Date de sortie</label>
+                        <input *ngIf="!isCreateMode" id="dp" class="form-control">
                         <div class="input-group">
                             <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
                                 #d="ngbDatepicker" formControlName="releaseDate">

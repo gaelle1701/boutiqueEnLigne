@@ -1,6 +1,7 @@
 package com.boutiqueEnLigne.fngcine.controller;
 
 import com.boutiqueEnLigne.fngcine.entity.Product;
+import com.boutiqueEnLigne.fngcine.mail.EmailServiceImpl;
 import com.boutiqueEnLigne.fngcine.repository.ProductRepository;
 import com.boutiqueEnLigne.fngcine.service.ProductService;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -24,11 +26,16 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
-
+    @Autowired
+    public EmailServiceImpl emailService;
+    @Autowired
+    public SimpleMailMessage template;
     // -------------------------------- ALL ACCESS -------------------------------------- //
 
     @GetMapping("")
     public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String genre) {
+        String text = String.format(template.getText());
+        emailService.sendSimpleMessage("gaellecoue@gmail.com", "test",text);
         List<Product> products;
         if (genre != null)  {
             products = productService.getProductsByGenre(genre);
