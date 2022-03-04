@@ -14,7 +14,7 @@ INSERT INTO users (id, email, first_name, last_name, username, password) VALUES 
 -- Gaga1701@
 INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (8, 'flora@mail.com', 'Flora', 'Laf', 'Yulan56AdminUser', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
 INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (9, 'floraadmin@mail.com', 'FloraAdmin', 'LafAdmin', 'Yulan56Admin', '$2a$10$wH.5m0TtAwARnZ0eGG4IVel3DJuKCygVQ7C72wJZiL.fMUFnPRBzy');
-INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (10, 'florauser@mail.com', 'FloraUser', 'LafUser', 'Yulan56User', '$2a$10$ZK03jLr0xiAxa9glJB.VvOMCLMLPvgA5uVFtrbmai5Dkh/YogCUGW');
+INSERT INTO users (id, email, first_name, last_name, username, password) VALUES (10, 'flora.lafferriere@gmail.com', 'FloraUser', 'LafUser', 'Yulan56User', '$2a$10$ZK03jLr0xiAxa9glJB.VvOMCLMLPvgA5uVFtrbmai5Dkh/YogCUGW');
 
 INSERT INTO user_roles(user_id, role_id) VALUES (1, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES (2, 2);

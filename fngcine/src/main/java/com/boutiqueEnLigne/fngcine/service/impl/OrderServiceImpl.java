@@ -39,11 +39,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
-        /*Long userId = authentificationValidation.getTokenUserId();
-        System.out.println("userId ------------------> " + userId);
-        User currentUser = userRepository.getById(userId);
-        System.out.println("currentUser ---------------------> " + currentUser);
-        order.setUser(currentUser);*/
         List<OrderDetail> orderDetailList = orderDetailService.getOrderDetailsByUser(order.getUser().getId());
         List<OrderDetail> newOrderDetailList = new ArrayList<>();
         Order newOrder = new Order();

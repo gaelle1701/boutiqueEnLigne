@@ -1,6 +1,7 @@
 package com.boutiqueEnLigne.fngcine.controller;
 
 import com.boutiqueEnLigne.fngcine.entity.*;
+import com.boutiqueEnLigne.fngcine.mail.EmailService;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
 import com.boutiqueEnLigne.fngcine.service.UserService;
@@ -10,9 +11,11 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,7 +33,7 @@ public class OrderController {
     private OrderDetailService orderDetailService;
 
     @Autowired
-    private SimpleMailMessage email;
+    private EmailService email;
 
     ResponseEntity responseEntity;
 
@@ -40,10 +43,18 @@ public class OrderController {
 
     @PostMapping("/order-detail")
     @PreAuthorize("hasAuthority('USER')")
-    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail, AuthentificationValidation authentificationValidation) {
+    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail, HttpServletRequest request, AuthentificationValidation authentificationValidation) {
         if (authentificationValidation.getTokenUserId() == orderDetail.getUserId()) {
-            OrderDetail newOrderDetail = orderDetailService.createOrderDetail(orderDetail);
-            return new ResponseEntity<>(newOrderDetail, HttpStatus.CREATED);
+            List<OrderDetail> orderDetailList = (List<OrderDetail>) request.getSession().getAttribute("DETAILS_SESSION");
+            if (orderDetailList == null) {
+                orderDetailList = new ArrayList<>();
+                request.getSession().setAttribute("DETAILS_SESSION", orderDetailList);
+            }
+            orderDetailService.createOrderDetail(orderDetail);
+            orderDetailList.add(orderDetail);
+            request.getSession().setAttribute("DETAILS_SESSION", orderDetailList);
+            System.out.println("SESSION ---------------------> " + orderDetailList);
+            return new ResponseEntity<>(orderDetail, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -52,13 +63,29 @@ public class OrderController {
 
     @GetMapping("/order-detail/{orderDetailId}")
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    public ResponseEntity<OrderDetail> getOrderDetail(@PathVariable("orderDetailId") Long orderDetailId, AuthentificationValidation authentificationValidation) {
+    public ResponseEntity<OrderDetail> getOrderDetail(@PathVariable("orderDetailId") Long orderDetailId, HttpServletRequest request, AuthentificationValidation authentificationValidation) {
+        List<OrderDetail> orderDetailList = (List<OrderDetail>) request.getSession().getAttribute("DETAILS_SESSION");
+        for (OrderDetail orderDetail: orderDetailList
+             ) {
+            System.out.println(orderDetail);
+        }
         OrderDetail orderDetail = orderDetailService.getOrderDetail(orderDetailId);
+        System.out.println(orderDetail.getUserId());
         if (authentificationValidation.getTokenUserId() == orderDetail.getUserId() || authentificationValidation.isAdmin()) {
             return new ResponseEntity<>(orderDetail, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
+    }
+
+    @GetMapping("/order-detail-list")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    public ResponseEntity<List<OrderDetail>> getOrderDetailList(HttpServletRequest request, AuthentificationValidation authentificationValidation) {
+        List<OrderDetail> orderDetailList = (List<OrderDetail>) request.getSession().getAttribute("DETAILS_SESSION");
+        for (OrderDetail orderDetail: orderDetailList) {
+            System.out.println(orderDetail);
+        }
+            return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
     }
 
     // -------------------------------- ORDER -------------------------------------- //
@@ -74,6 +101,7 @@ public class OrderController {
         Long userIdOrder = order.getUser().getId();
         if (tokenUserId == userIdOrder) {
             orderService.createOrder(order);
+            email.sendSimpleMessage(order);
             return new ResponseEntity<>(order, HttpStatus.CREATED);
         }  else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

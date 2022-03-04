@@ -18,6 +18,11 @@ export class OrderService {
       this.orderSubject$.next(resp)
     })
   }
+  getOrdersDetailSession() {
+    this.http.get<Iorders[]>(`${`${environment.baseURL}`}/orders/order-detail-list`).subscribe(resp => {
+      this.orderSubject$.next(resp)
+    })
+  }
 
 
 

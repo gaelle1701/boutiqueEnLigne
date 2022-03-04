@@ -46,6 +46,12 @@ public class Order implements Serializable {
     @Size(min = 2, max = 80)
     private String city;
 
+    private static final float TVA = 20f;
+
+    public static float getTVA() {
+        return TVA;
+    }
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY)
     private Delivery delivery;

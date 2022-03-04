@@ -62,16 +62,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 // Pas besoin car utilisation de token
                 //Il faut la définir, Si rien ne correspond alors 403
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 //Ne crée pas de session HTTP
-                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // Pour définir les rôles
                 .authorizeRequests()
-                //.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 // définir l'association des rôles avec les pages
-                //.antMatchers("/api/auth/**", "/api/products/**", "/api/deliveries/**", "api/mail/**").permitAll()
-                .anyRequest().permitAll();
+                .antMatchers("/api/auth/**", "/api/products/**", "/api/deliveries/**").permitAll()
+                .anyRequest().authenticated();
+                //.anyRequest().permitAll();
 
-                //.anyRequest().authenticated();
         //Personnalisation du token à partir du security filter
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

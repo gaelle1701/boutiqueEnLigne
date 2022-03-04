@@ -26,16 +26,11 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    public EmailServiceImpl emailService;
-    @Autowired
-    public SimpleMailMessage template;
+
     // -------------------------------- ALL ACCESS -------------------------------------- //
 
     @GetMapping("")
     public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String genre) {
-        String text = String.format(template.getText());
-        emailService.sendSimpleMessage("gaellecoue@gmail.com", "test",text);
         List<Product> products;
         if (genre != null)  {
             products = productService.getProductsByGenre(genre);

@@ -23,9 +23,12 @@ export class AdminOrderPageComponent implements OnInit {
   ngOnInit(): void {
     this.onGetOrders();
     this.orderService.getOrders();
+    this.orderService.getOrdersDetailSession();
+    console.log(this.orderService.getOrdersDetailSession());
   }
 
   onGetOrders() {
+    
     this.orderSub = this.orderService.orderSubject$.subscribe(resp => {
       this.orders = resp;
       console.log(this.orders);

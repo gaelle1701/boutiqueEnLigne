@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="../../../../assets/img/Logo.png" alt="logo" class="logo"></a>
+        <a class="navbar-brand" [routerLink]="['/home']"><img src="../../../../assets/img/Logo.png" alt="logo" class="logo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link">Catégories</a>
                 </li>
-                <li class="nav-item">
+                <li cla ss="nav-item">
                     <a class="nav-link icon1" [routerLink]="['/login']" routerLinkActive="router-link-active" >
                         <app-icon class="icon" [name]="'person'" [size]="1.5"></app-icon>
                     </a>

@@ -1,74 +1,69 @@
 package com.boutiqueEnLigne.fngcine.mail;
 
-import java.io.File;
-import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
+import com.boutiqueEnLigne.fngcine.entity.Order;
+import com.boutiqueEnLigne.fngcine.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
-
-/**
- * Created by Olga on 7/15/2016.
- */
-@Service("EmailService")
+@Service
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "noreply@baeldung.com";
+    private static final String NOREPLY_ADDRESS = "noreply@fngcine.com";
 
     @Autowired
     private JavaMailSender emailSender;
 
     @Autowired
-    private SimpleMailMessage template;
+    private OrderService orderService;
 
-/*    @Autowired
-    private SpringTemplateEngine thymeleafTemplateEngine;*/
-
-    @Value("classpath:/mail-logo.png")
-    private Resource resourceFile;
-
-
-    public void sendSimpleMessage(String to, String subject, String text) {
+    @Override
+    public void sendSimpleMessage(Order order) {
+        String pattern = "dd-MM-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(order.getOrderDate());
+        String text = "Commande N°: " + order.getId() +
+                " \nCommandé le : " + date +
+                " \n" +
+                " \n------------------------------------" +
+                " \n" +
+                " \n - Client : " + order.getUser().getLastName() + " " + order.getUser().getFirstName() +
+                " \n" +
+                " \n - Adresse de livraison : " + order.getAddress() + ", " + order.getZipCode() + " " + order.getCity() +
+                " \n" +
+                " \n - TVA : " + order.getTVA() + "%" +
+                " \n - Prix TTC : " + order.getTotalPrice() + "€";
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(NOREPLY_ADDRESS);
-            message.setTo(to);
-            message.setSubject(subject);
+            message.setTo(order.getUser().getEmail());
+            message.setSubject("Facture de votre commande N° " + order.getId() + " chez F&G Ciné");
             message.setText(text);
-
             emailSender.send(message);
         } catch (MailException exception) {
             exception.printStackTrace();
         }
     }
 
-    public void sendPreConfiguredMail(String message)
+/*    public void sendPreConfiguredMail(String message)
     {
         SimpleMailMessage mailMessage = new SimpleMailMessage(template);
         mailMessage.setText(message);
         emailSender.send(mailMessage);
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void sendSimpleMessageUsingTemplate(String to,
                                                String subject,
                                                String ...templateModel) {
         String text = String.format(template.getText(), templateModel);
         sendSimpleMessage(to, subject, text);
-    }
+    }*/
 
 /*    @Override
     public void sendMessageWithAttachment(String to,
@@ -106,9 +101,9 @@ public class EmailServiceImpl implements EmailService {
         String htmlBody = thymeleafTemplateEngine.process("template-thymeleaf.html", thymeleafContext);
 
         sendHtmlMessage(to, subject, htmlBody);
-    }*/
+    }
 
-/*    private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
+    private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
