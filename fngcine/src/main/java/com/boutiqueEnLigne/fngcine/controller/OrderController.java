@@ -17,6 +17,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,10 +46,18 @@ public class OrderController {
 
     @PostMapping("/order-detail")
     @PreAuthorize("hasAuthority('USER')")
-    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail, AuthentificationValidation authentificationValidation) {
+    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail, HttpServletRequest request, AuthentificationValidation authentificationValidation) {
         if (authentificationValidation.getTokenUserId() == orderDetail.getUserId()) {
-            OrderDetail newOrderDetail = orderDetailService.createOrderDetail(orderDetail);
-            return new ResponseEntity<>(newOrderDetail, HttpStatus.CREATED);
+            List<OrderDetail> orderDetailList = (List<OrderDetail>) request.getSession().getAttribute("DETAILS_SESSION");
+            if (orderDetailList == null) {
+                orderDetailList = new ArrayList<>();
+                request.getSession().setAttribute("DETAILS_SESSION", orderDetailList);
+            }
+            orderDetailService.createOrderDetail(orderDetail);
+            orderDetailList.add(orderDetail);
+            request.getSession().setAttribute("DETAILS_SESSION", orderDetailList);
+            System.out.println("SESSION ---------------------> " + orderDetailList);
+            return new ResponseEntity<>(orderDetail, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
