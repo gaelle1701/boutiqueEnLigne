@@ -15,14 +15,13 @@ public class ProductTest {
     @Autowired
     private ProductService productService;
 
-
     Product fakeProduct = new Product();
     Long productId;
 
     public void setFakeProduct(){
         fakeProduct.setId(11L);
         fakeProduct.setLabel("La petite Sirène");
-        fakeProduct.setDescription("une histoire de queues de poisson");
+        fakeProduct.setDescription("une histoire de poissons");
         fakeProduct.setGenre("X");
         fakeProduct.setUnitPrice(5.99f);
         fakeProduct.setQtyStock(10);
@@ -55,7 +54,7 @@ public class ProductTest {
             }
         }
         Assertions.assertTrue(founded == true,
-                "Did not find the expected product in the productList");
+                "find the expected product in the productList");
         Assertions.assertNotNull(productService.getProduct((productId)));
     }
 
@@ -64,7 +63,7 @@ public class ProductTest {
     @Test
     @Order(3)
     void readOneProductTest() {
-        Assertions.assertEquals(fakeProduct.getLabel(), productService.getProduct(productId).getLabel());
+        Assertions.assertEquals(fakeProduct.getLabel(),productService.getProduct(productId).getLabel());
         Assertions.assertEquals(fakeProduct.getDescription(), productService.getProduct(productId).getDescription());
         Assertions.assertEquals(fakeProduct.getUrlImg(), productService.getProduct(productId).getUrlImg());
         Assertions.assertEquals(fakeProduct.getGenre(), productService.getProduct(productId).getGenre());
@@ -77,6 +76,7 @@ public class ProductTest {
     void updateProductByIdTest() {
         Product productTest = productService.getProduct(productId);
         fakeProduct.setLabel("La sirène");
+        
         productService.updateProduct(fakeProduct);
         Assertions.assertEquals("La sirène", productService.getProduct(productId).getLabel());
     }

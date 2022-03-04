@@ -20,7 +20,7 @@ import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.
 
 const routes: Routes = [
   
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'login', component: LoginPageComponent },
@@ -38,8 +38,8 @@ const routes: Routes = [
     { path: 'add-product/:id', component: AddProductPageComponent },
   ]},
 
-  { path: 'notfound', component: NotFoundPageComponent},
-  { path: '**', redirectTo: 'notfound'}
+  { path: 'notfound', component: NotFoundPageComponent },
+  { path: '**', redirectTo: 'notfound' }
 ]
 
 @NgModule({

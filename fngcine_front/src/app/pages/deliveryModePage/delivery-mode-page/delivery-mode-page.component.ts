@@ -50,9 +50,8 @@ export class DeliveryModePageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('deliveryMode ---------> ' + this.addressForm.get('deliveryMode')?.value);
-    console.log('receiver ---------> ' + this.addressForm.get('receiver')?.value);
-    console.log('city ---------> ' + this.addressForm.get('city')?.value);
+    console.log('deliveryMode ---------> ' + this.addressForm);
+
     this.submitted = true;
   }
 
