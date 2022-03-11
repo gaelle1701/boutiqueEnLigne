@@ -14,7 +14,12 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getOrders() {
-    this.http.get<Iorders[]>(`${environment.baseURL}/orders?limit=5`).subscribe(resp => {
+    this.http.get<Iorders[]>(`${`${environment.baseURL}`}/orders?limit=5`).subscribe(resp => {
+      this.orderSubject$.next(resp)
+    })
+  }
+  getOrdersDetailSession() {
+    this.http.get<Iorders[]>(`${`${environment.baseURL}`}/orders/order-detail-list`).subscribe(resp => {
       this.orderSubject$.next(resp)
     })
   }

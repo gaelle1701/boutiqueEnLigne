@@ -7,7 +7,6 @@ import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.validation.AuthentificationValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +30,14 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public List<OrderDetail> getOrderDetailsByUser(Long userId) {
         List<OrderDetail> orderDetailList = orderDetailRepository.findAll();
         List<OrderDetail> orderDetailListByUser = new ArrayList<>();
+
         for (OrderDetail orderDetail: orderDetailList) {
             if (orderDetail.getUserId() == userId){
                     /*System.out.println("----------------> USER" + orderDetail.getUserId());
                     System.out.println("----------------> USER" + userId);*/
                 orderDetailListByUser.add(orderDetail);
             }
+
         }
         return  orderDetailListByUser;
     }
@@ -55,4 +56,6 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         }
         return orderDetail;
     }
+
 }
+

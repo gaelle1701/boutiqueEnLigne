@@ -1,0 +1,23 @@
+@use '../../../../../assets/scss/variables' as v;
+@use '../../../../../assets/scss/mixin' as m;
+@import '../../../../../assets/scss/shared';
+
+.row{
+    padding-bottom: 50px;
+    color: v.$lightPink;
+    font-family: v.$Inter;
+}
+
+.mobile{
+    @include m.for-mobile-landscape-down{
+        padding-bottom: 10px;
+        }
+}
+
+.form-button{
+    @include m.buttonPink();
+}
+
+.smile-icon{
+    color: v.$lightPink;
+}

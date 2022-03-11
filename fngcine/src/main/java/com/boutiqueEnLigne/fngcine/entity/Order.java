@@ -2,7 +2,9 @@ package com.boutiqueEnLigne.fngcine.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,8 +14,8 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @Table(name= "orders")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order implements Serializable {
@@ -29,6 +31,9 @@ public class Order implements Serializable {
     @Size(min = 2, max = 80)
     private String receiver;
 
+    @NotNull
+    private float totalPrice;
+
     @NotBlank
     @Size(min = 2, max = 80)
     private String address;
@@ -41,24 +46,23 @@ public class Order implements Serializable {
     @Size(min = 2, max = 80)
     private String city;
 
-    @NotNull
-    private float totalPrice;
+    private static final float TVA = 20f;
 
-    //Prix total commande
+    public static float getTVA() {
+        return TVA;
+    }
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Delivery delivery;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(fetch= FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
-
-
-
-
 }
+

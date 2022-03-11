@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-
   userSubject$ = new Subject<Iusers[]>();
 
   constructor(private http: HttpClient) { }

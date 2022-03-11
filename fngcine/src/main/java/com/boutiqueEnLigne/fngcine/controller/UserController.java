@@ -1,6 +1,5 @@
 package com.boutiqueEnLigne.fngcine.controller;
 
-import com.boutiqueEnLigne.fngcine.entity.Order;
 import com.boutiqueEnLigne.fngcine.entity.User;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @Getter
@@ -82,5 +80,6 @@ public class UserController {
             ResponseEntity.status(HttpStatus.FORBIDDEN);
         }
     }
+
 
 }

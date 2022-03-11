@@ -21,11 +21,10 @@ public class ProductTest {
     public void setFakeProduct(){
         fakeProduct.setId(11L);
         fakeProduct.setLabel("La petite Sirène");
-        fakeProduct.setDescription("une histoire de poissons");
+        fakeProduct.setDescription("une histoire de sirène");
         fakeProduct.setGenre("X");
         fakeProduct.setUnitPrice(5.99f);
         fakeProduct.setQtyStock(10);
-
         productService.createProduct(fakeProduct);
         productId= fakeProduct.getId();
     }
@@ -57,8 +56,6 @@ public class ProductTest {
                 "find the expected product in the productList");
         Assertions.assertNotNull(productService.getProduct((productId)));
     }
-
-
 
     @Test
     @Order(3)

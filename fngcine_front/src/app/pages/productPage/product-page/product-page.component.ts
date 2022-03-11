@@ -9,9 +9,9 @@ import { ProductService } from 'src/app/services/productService/product.service'
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-
-  product!: any;
   id: any;
+  product!: any;
+
   constructor(private productService: ProductService, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {

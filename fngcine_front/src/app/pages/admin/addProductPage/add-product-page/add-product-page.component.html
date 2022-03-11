@@ -1,1 +1,92 @@
-<p>add-product-page works!</p>
+<h1 *ngIf="isCreateMode">Ajoutez un DVD</h1>
+<h1 *ngIf="!isCreateMode">Modifiez un DVD</h1>
+<div>
+    <a class="home-return" [routerLink]="['/admin-home']">
+        Retour <app-icon class="icon" [name]="'arrow-return-left'" [size]="1.2" [color]="'#F1AEB5'"></app-icon>
+    </a>
+</div>
+<div class="container">
+    <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" class="m-3">
+            <div class="row">
+                <div class="col-md-6 mobile">
+                    <label for="receiver" class="form-label">Nom du DVD</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <div *ngIf="form['name'].invalid && (form['name'].dirty || form['name'].touched)">
+                        <div *ngIf="form['name'].errors && form['name'].errors['required']" class="text-danger fst-italic">Le
+                            nom du DVD est requis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mobile">
+                    <div class="form-group">
+                        <label for="releaseDate" class="form-label">Date de sortie</label>
+                        <input *ngIf="!isCreateMode" id="dp" class="form-control">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" formControlName="releaseDate">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                                    <app-icon class="icon" [name]="'calendar'" [size]="1.2" [color]="'#F1AEB5'"></app-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div *ngIf="form['releaseDate'].invalid && (form['releaseDate'].dirty || form['releaseDate'].touched)">
+                            <div *ngIf="form['releaseDate'].errors && form['releaseDate'].errors['required']" class="text-danger fst-italic">La
+                                date est requise</div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <div class="row">
+                <div class="col-md-6 mobile">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="image" formControlName="image">
+                    <div *ngIf="form['image'].invalid && (form['image'].dirty || form['image'].touched)">
+                        <div *ngIf="form['image'].errors && form['image'].errors['required']" class="text-danger fst-italic">L'image est requise</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mobile">
+                    <label for="genre" class="form-label">Genre</label>
+                    <input type="text" class="form-control" id="genre" formControlName="genre">
+                    <div *ngIf="form['genre'].invalid && (form['genre'].dirty || form['genre'].touched)">
+                        <div *ngIf="form['genre'].errors && form['genre'].errors['required']" class="text-danger fst-italic">Le
+                            genre est requis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mobile">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="textarea" class="form-control" id="description" formControlName="description">
+                    <div *ngIf="form['description'].invalid && (form['description'].dirty || form['description'].touched)">
+                        <div *ngIf="form['description'].errors && form['description'].errors['required']" class="text-danger fst-italic">La
+                            description est requise</div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+                <div class="col-md-3 mobile">
+                    <label for="price" class="form-label">Prix (HT - €)</label>
+                    <input type="textarea" class="form-control" id="price" formControlName="price">
+                    <div *ngIf="form['price'].invalid && (form['price'].dirty || form['price'].touched)">
+                        <div *ngIf="form['price'].errors && form['price'].errors['required']" class="text-danger fst-italic">Le
+                            prix est requis</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mobile">
+                    <label for="quantity" class="form-label">Quantité</label>
+                    <input type="textarea" class="form-control" id="quantity" formControlName="quantity">
+                    <div *ngIf="form['quantity'].invalid && (form['quantity'].dirty || form['quantity'].touched)">
+                        <div *ngIf="form['quantity'].errors && form['quantity'].errors['required']" class="text-danger fst-italic">La quantité est requise</div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around my-4">
+                <button type="submit" class="btn-pink" [disabled]="addProductForm.invalid">Valider</button>
+            </div>
+        </form>
+    </div>

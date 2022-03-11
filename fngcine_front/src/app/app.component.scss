@@ -5,7 +5,10 @@
 h1.mainTitle {
     @include m.title(v.$lightPink, 18)
 }
-
-.main {
-    min-height: calc(100vh - 95px); 
+.main{
+    min-height: calc(100vh - 223px); 
 }
+
+// .main {
+//     min-height: calc(100vh - 95px); 
+// }

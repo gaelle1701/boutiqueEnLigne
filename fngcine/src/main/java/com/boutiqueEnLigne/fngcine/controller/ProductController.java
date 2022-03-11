@@ -1,9 +1,10 @@
 package com.boutiqueEnLigne.fngcine.controller;
 
 import com.boutiqueEnLigne.fngcine.entity.Product;
+
+import com.boutiqueEnLigne.fngcine.mail.EmailServiceImpl;
 import com.boutiqueEnLigne.fngcine.repository.ProductRepository;
 import com.boutiqueEnLigne.fngcine.service.ProductService;
-import com.boutiqueEnLigne.fngcine.service.UserService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -52,4 +53,6 @@ public class ProductController {
     }
 
 
+
 }
+

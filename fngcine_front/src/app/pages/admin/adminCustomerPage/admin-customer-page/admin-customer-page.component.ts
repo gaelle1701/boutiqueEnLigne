@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Iproducts } from 'src/app/models/iproducts';
 import { Iusers } from 'src/app/models/iusers';
 import { UserService } from 'src/app/services/userService/user.service';
 import * as _ from 'underscore';
@@ -30,7 +31,7 @@ export class AdminCustomerPageComponent implements OnInit {
       console.log(this.users);
       for (let index = 0; index < this.users.length; index++) {
         const element = this.users[index];
-        this.labels = _.without(_.keys(element), "password", "ordersList");
+        this.labels = _.without(_.keys(element), "password", "roles");
         console.log(this.labels);
         
       }

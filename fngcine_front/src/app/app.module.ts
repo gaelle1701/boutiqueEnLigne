@@ -23,10 +23,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
 import { ProductDetailComponent } from './components/productDetail/product-detail/product-detail.component';
 import { ShoppingSummaryComponent } from './components/shoppingSummary/shopping-summary/shopping-summary.component';
-import { HttpClientModule } from '@angular/common/http';
-import { LayoutAuthComponent } from './components/layout-auth/layout-auth.component';
-import { registerLocaleData } from '@angular/common';
 import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { LayoutAuthComponent } from './components/layout-auth/layout-auth.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Placement as PopperPlacement, Options } from '@popperjs/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -56,17 +60,17 @@ registerLocaleData(localeFr, 'fr');
     ConfirmationPageComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-function localeFr(localeFr: any, arg1: string) {
-  throw new Error('Function not implemented.');
-}
 

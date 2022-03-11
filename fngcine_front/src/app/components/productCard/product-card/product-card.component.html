@@ -9,8 +9,10 @@
         <h5 class="card-title textPink">{{ productCards.unitPrice }} €</h5>
         <p class="card-text text-hidden textPurple">{{ productCards.description }}</p>
         <div class="d-flex justify-content-around my-2">
-          <button [routerLink]="['/products', productCards.id]" routerLinkActive="router-link-active"  class="btn btn-pink">Voir</button>
-          <button class="btn btn-purple" [routerLink]="['/shopping']" routerLinkActive="router-link-active">Ajouter</button>
+          <button [routerLink]="['/products', productCards.id]" routerLinkActive="router-link-active"
+            class="btn btn-pink">Voir</button>
+          <button class="btn btn-purple" [routerLink]="['/shopping']"
+            routerLinkActive="router-link-active">Ajouter</button>
         </div>
       </div>
     </div>

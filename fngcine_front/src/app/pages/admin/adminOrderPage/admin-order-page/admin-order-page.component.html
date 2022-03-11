@@ -10,7 +10,7 @@
             <tr class="table-tr">
                 <th *ngFor="let label of labels" class="table-th" scope="col">{{ label | titlecase }}
                 </th>
-                <th class="table-th" scope="col">Actions
+                <th class="table-th text-center" scope="col">Actions
                 </th>
             </tr>
         </thead>
@@ -21,7 +21,11 @@
                 <th class="table-th" scope="row">{{order.orderDate | date:'d/M/YYYY' }}</th>
                 <th class="table-th" scope="row">{{order.receiver}}</th>
                 <th class="table-th" scope="row">{{order.totalPrice}}€</th>
+                <th class="table-th" scope="row">{{order.address}}</th>
+                <th class="table-th" scope="row">{{order.zipCode}}</th>
+                <th class="table-th" scope="row">{{order.city}}</th>
                 <th class="table-th" scope="row">{{order.delivery.label}}({{order.delivery.shippingFee}}€)</th>
+                <th class="table-th" scope="row">{{order.userId}}</th>
                 <th class="table-th table-icon" scope="row">
                     <app-icon class="icon" [name]="'pencil-square'" [size]="1.5" [routerLink]="'/'"></app-icon>
                     <app-icon class="icon" [name]="'trash'" [size]="1.5" [color]="'#E35D6A'"></app-icon>

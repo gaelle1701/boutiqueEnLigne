@@ -2,18 +2,21 @@ package com.boutiqueEnLigne.fngcine.service.impl;
 
 import com.boutiqueEnLigne.fngcine.entity.Order;
 import com.boutiqueEnLigne.fngcine.entity.OrderDetail;
-import com.boutiqueEnLigne.fngcine.entity.Product;
+
 import com.boutiqueEnLigne.fngcine.entity.User;
 import com.boutiqueEnLigne.fngcine.repository.OrderRepository;
 import com.boutiqueEnLigne.fngcine.repository.UserRepository;
 import com.boutiqueEnLigne.fngcine.service.OrderDetailService;
 import com.boutiqueEnLigne.fngcine.service.OrderService;
+import com.boutiqueEnLigne.fngcine.validation.AuthentificationValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -24,6 +27,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDetailService orderDetailService;
 
+    private AuthentificationValidation authentificationValidation;
 
     public static final float TVA = 20f;
 
@@ -38,11 +42,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
-        /*Long userId = authentificationValidation.getTokenUserId();
-        System.out.println("userId ------------------> " + userId);
-        User currentUser = userRepository.getById(userId);
-        System.out.println("currentUser ---------------------> " + currentUser);
-        order.setUser(currentUser);*/
         List<OrderDetail> orderDetailList = orderDetailService.getOrderDetailsByUser(order.getUser().getId());
         List<OrderDetail> newOrderDetailList = new ArrayList<>();
         Order newOrder = new Order();
@@ -107,17 +106,17 @@ public class OrderServiceImpl implements OrderService {
         }
         return orderList;
     }
-    /*    @Override
-    public Order addOrderDetailToOrder(Long id, OrderDetail orderDetail) {
-        Optional<Order> currentOrder = orderRepository.findById(id);
-        Order updatedOrder = null;
-        if(currentOrder.isPresent()) {
-            updatedOrder = currentOrder.get();
-            updatedOrder.getOrderDetailList().add(orderDetail);
-            orderDetailRepository.save(orderDetail);
-            orderRepository.save(updatedOrder);
-        }
-        return updatedOrder;
-    }*/
 
+/*    @Override
+public Order addOrderDetailToOrder(Long id, OrderDetail orderDetail) {
+    Optional<Order> currentOrder = orderRepository.findById(id);
+    Order updatedOrder = null;
+    if(currentOrder.isPresent()) {
+        updatedOrder = currentOrder.get();
+        updatedOrder.getOrderDetailList().add(orderDetail);
+        orderDetailRepository.save(orderDetail);
+        orderRepository.save(updatedOrder);
+    }
+    return updatedOrder;
+}*/
 }

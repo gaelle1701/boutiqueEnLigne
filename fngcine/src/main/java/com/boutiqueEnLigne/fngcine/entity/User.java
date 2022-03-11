@@ -2,6 +2,9 @@ package com.boutiqueEnLigne.fngcine.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +18,8 @@ import java.util.Set;
 @Table(name="users", uniqueConstraints= {
         @UniqueConstraint(columnNames = "email")
 })
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

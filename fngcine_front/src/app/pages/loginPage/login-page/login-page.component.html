@@ -10,10 +10,10 @@
     <form (ngSubmit)='onSubmit(loginForm)' #loginForm='ngForm' class="login-form">
         <div class="row justify-content-center">
             <div class="col-md-6 mobile">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-control" ngModel required #email="ngModel">
-                <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                    <div *ngIf="email.errors && email.errors['required']" class="text-danger fst-italic">L'email est requis</div>
+                <label for="username" class="form-label">Pseudonyme</label>
+                <input type="text" id="username" name="username" class="form-control" ngModel required #username="ngModel">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors && username.errors['required']" class="text-danger fst-italic">Le pseudonyme est requis</div>
                 </div>
             </div>
         </div>
@@ -35,14 +35,16 @@
     <div class="row justify-content-center">
         <div class="col-6 text-center">
             <span>Pas encore inscrit, c'est </span>
-            <a [routerLink]="['/signup']" class="home-return">ici </a>
-             
+            <a [routerLink]="['/signup']" class="return">ici </a>
+            <span>
+                <app-icon class="smile-icon" [name]="'emoji-smile-upside-down-fill'" [size]="1"></app-icon> !
+            </span>
         </div>
     </div>
     <div class="separator"></div>
     <div class="row justify-content-center">
         <div class="col-6 text-center">
-            <a [routerLink]="['/home']" class="home-return">Retour</a><span> à la page d'accueil</span>
+            <a [routerLink]="['/home']" class="return">Retour</a><span> à la page d'accueil</span>
         </div>
     </div>
 </div>

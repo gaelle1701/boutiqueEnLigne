@@ -9,10 +9,10 @@ import { AdminHomePageComponent } from './pages/admin/adminHomePage/admin-home-p
 import { AdminOrderPageComponent } from './pages/admin/adminOrderPage/admin-order-page/admin-order-page.component';
 import { AdminProductPageComponent } from './pages/admin/adminProductPage/admin-product-page/admin-product-page.component';
 import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
+import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-found-page.component';
 import { DeliveryModePageComponent } from './pages/deliveryModePage/delivery-mode-page/delivery-mode-page.component';
 import { HomePageComponent } from './pages/homePage/home-page/home-page.component';
 import { LoginPageComponent } from './pages/loginPage/login-page/login-page.component';
-import { NotFoundPageComponent } from './pages/notFoundPage/not-found-page/not-found-page.component';
 import { ProductPageComponent } from './pages/productPage/product-page/product-page.component';
 import { ShoppingCartPageComponent } from './pages/shoppingCartPage/shopping-cart-page/shopping-cart-page.component';
 import { SignupPageComponent } from './pages/signupPage/signup-page/signup-page.component';
