@@ -76,7 +76,7 @@ public class ProductTest {
     void updateProductByIdTest() {
         Product productTest = productService.getProduct(productId);
         fakeProduct.setLabel("La sirène");
-        
+
         productService.updateProduct(fakeProduct);
         Assertions.assertEquals("La sirène", productService.getProduct(productId).getLabel());
     }
